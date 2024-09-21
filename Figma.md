@@ -1,8 +1,8 @@
-FIGMA web design pictures:
-##Visit now out figma design prototype
+
+##Visit now out figma design prototype<br/>
 Link:https://www.figma.com/proto/jb5uNhN0mBYGgP17lVLBLF/Test?node-id=0-1&t=wmuuILl9Zqu7Cj9Q-1
 
-
+FIGMA web design pictures:<br/>
 ![image](https://github.com/user-attachments/assets/83be87d4-8451-433a-8523-1e78ef289681)
 
 ![image](https://github.com/user-attachments/assets/85690154-28c3-4503-b4b2-fea1d22e595e)
