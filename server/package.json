@@ -1,0 +1,11 @@
+{
+  "name": "food-delivery-server",
+  "version": "1.0.0",
+  "description": "It is a server for our food delivery website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yasaswini,Himahoney,keerthana",
+  "license": "ISC"
+}
