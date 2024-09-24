@@ -3,7 +3,7 @@ import food2 from './food2.png';
 
 const Home = () => {
   return (
-    <div style={{ position: 'relative', height: '100vh', width: '100%', overflow: 'hidden' }}>
+    <div style={{ position: 'relative', height: '60vh', width: '100%' }}>
       
       <div style={{
         position: 'absolute',
@@ -16,7 +16,7 @@ const Home = () => {
        
         textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)', // Optional: for better visibility
       }}>
-        <h1>Welcome to Our Food Delivery Service</h1>
+        <p>Welcome to Our Food Delivery Service</p>
         <p>Your favorite meals delivered fast!</p>
       </div>
     </div>
