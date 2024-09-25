@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
 
-const SignUp = () => {
+function SignUp() {
   const {
     register,
     handleSubmit,
@@ -33,15 +33,17 @@ const SignUp = () => {
       component="form"
       onSubmit={handleSubmit(onSubmit)}
       sx={{
-        maxWidth: '500px',
+        maxWidth: '400px', // Set maximum width for the form
         margin: 'auto',
         padding: '20px',
         borderRadius: '8px',
         boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
         backgroundColor: 'white',
+        display: 'flex',
+        flexDirection: 'column',
       }}
     >
-      <Typography variant="h5" component="div" sx={{ mb: 2 }}>
+      <Typography variant="h5" component="div" sx={{ mb: 2, textAlign: 'center' }}>
         Sign Up
       </Typography>
       
@@ -114,18 +116,17 @@ const SignUp = () => {
       />
       {errors.terms && <Typography color="error">{errors.terms.message}</Typography>}
       
-      <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
+      <Button type="submit" variant="contained" color="warning" fullWidth sx={{ mt: 2 }}>
         Sign Up
       </Button>
-      
+
       <Box sx={{ mt: 2, textAlign: 'center' }}>
         <Link href="/Login" variant="body2">
           Already have an account? Login
         </Link>
       </Box>
-
     </Box>
   );
-};
+}
 
 export default SignUp;
