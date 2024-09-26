@@ -11,7 +11,9 @@ import Profile from './Components/Profile';
 import MyOrders from './Components/MyOrder'; // Ensure this matches your file name
 import Logout from './Components/logout'; // Ensure this matches your file name
 import Footer from './Components/Footer'; // Ensure Footer is exported correctly
-
+import Aboutus from './Components/AboutUs';
+import Privacy from './Components/Privacy';
+import Contact from './Components/Contact';
 const App = () => {
   return (
     <Router>
@@ -29,6 +31,9 @@ const App = () => {
             <Route path="/profile" element={<Profile />} />
             <Route path="/my-orders" element={<MyOrders />} />
             <Route path="/logout" element={<Logout />} />
+           <Route path='/Aboutus' element={<Aboutus/>}/>
+           <Route path='/Privacy' element={<Privacy/>}/>
+           <Route path='/Contact' element={<Contact/>}/>
           </Routes>
         </div>
      

@@ -19,7 +19,7 @@ const Footer = () => {
               Company
             </Typography>
             <Typography>
-              <Link href="/about" color="inherit" underline="hover">
+              <Link href="/Aboutus" color="inherit" underline="hover">
                 About Us
               </Link>
             </Typography>
@@ -35,7 +35,7 @@ const Footer = () => {
             </Typography>
             <Typography>📞 91-1010101010</Typography>
             <Typography>
-              <Link href="/contact" color="inherit" underline="hover">
+              <Link href="/Contact" color="inherit" underline="hover">
                 Contact Us
               </Link>
             </Typography>
