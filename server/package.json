@@ -1,0 +1,18 @@
+{
+  "name": "food_delivery_server",
+  "version": "1.0.0",
+  "description": "This is a website built with Mern stack for food delivery servicees",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yasaswini,Himahoney,keerthana",
+  "license": "ISC",
+  "dependencies": {
+    "epress": "^0.0.1-security",
+    "express": "^4.21.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}

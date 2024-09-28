@@ -14,6 +14,7 @@ import Footer from './Components/Footer'; // Ensure Footer is exported correctly
 import Aboutus from './Components/AboutUs';
 import Privacy from './Components/Privacy';
 import Contact from './Components/Contact';
+import Payment from './Components/Payment'
 const App = () => {
   return (
     <Router>
@@ -35,6 +36,7 @@ const App = () => {
            <Route path='/Privacy' element={<Privacy/>}/>
            <Route path='/Contact' element={<Contact/>}/>
           </Routes>
+          <Payment/>
         </div>
      
         <Footer />
