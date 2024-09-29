@@ -76,7 +76,7 @@ const Login = () => {
      
 
       <Box sx={{ mt: 2, textAlign: 'center' }}>
-        <Link href="#" variant="body2">
+        <Link href="/ForgotPassword" variant="body2">
           Forgot Password?
         </Link>
         <Box mt={1}>

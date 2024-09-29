@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -6,34 +7,35 @@ import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { useState } from 'react';
+import Autocomplete from '@mui/material/Autocomplete';
+import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+
+// Importing countries and cities from JSON files
+import countriesData from './JsonFiles/Countries.json';
+import citiesData from './JsonFiles/Cities.json';
 
 function SignUp() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const [profilePicture, setProfilePicture] = useState(null);
+  const { register, handleSubmit, formState: { errors }, watch, reset } = useForm();
+  const [showPassword, setShowPassword] = useState(false);
+  const [showRepeatPassword, setShowRepeatPassword] = useState(false);
 
   const onSubmit = (data) => {
-    // Handle the signup logic here using the data object
     console.log('Sign up successful', data);
+    reset();
   };
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      setProfilePicture(URL.createObjectURL(file));
-    }
-  };
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleClickShowRepeatPassword = () => setShowRepeatPassword(!showRepeatPassword);
 
   return (
     <Box
       component="form"
       onSubmit={handleSubmit(onSubmit)}
       sx={{
-        maxWidth: '400px', // Set maximum width for the form
+        maxWidth: '400px',
         margin: 'auto',
         padding: '20px',
         borderRadius: '8px',
@@ -46,10 +48,11 @@ function SignUp() {
       <Typography variant="h5" component="div" sx={{ mb: 2, textAlign: 'center' }}>
         Sign Up
       </Typography>
-      
+
       <TextField
         fullWidth
         label="Full Name"
+        spellCheck={false}
         {...register('fullName', {
           required: 'Full Name is required',
           pattern: {
@@ -61,7 +64,7 @@ function SignUp() {
         helperText={errors.fullName?.message}
         margin="normal"
       />
-      
+
       <TextField
         fullWidth
         label="Phone Number"
@@ -71,12 +74,20 @@ function SignUp() {
             value: /^[0-9]+$/,
             message: 'Only numeric values are allowed',
           },
+          minLength: {
+            value: 10,
+            message: 'Phone number must be at least 10 digits',
+          },
+          maxLength: {
+            value: 10,
+            message: 'Phone number must not exceed 10 digits',
+          },
         })}
         error={Boolean(errors.phone)}
         helperText={errors.phone?.message}
         margin="normal"
       />
-      
+
       <TextField
         fullWidth
         label="Email"
@@ -92,30 +103,100 @@ function SignUp() {
         helperText={errors.email?.message}
         margin="normal"
       />
-      
+
+      <Autocomplete
+        options={countriesData.Countries}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="Country"
+            {...register('country', { required: 'Country is required' })}
+            error={Boolean(errors.country)}
+            helperText={errors.country?.message}
+            spellCheck={false}
+            margin="normal"
+          />
+        )}
+      />
+
+      <Autocomplete
+        options={citiesData.Cities}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="City"
+            {...register('city', { required: 'City is required' })}
+            error={Boolean(errors.city)}
+            helperText={errors.city?.message}
+            spellCheck={false}
+            margin="normal"
+          />
+        )}
+      />
+
       <TextField
         fullWidth
-        type="password"
         label="Password"
+        type={showPassword ? 'text' : 'password'}
         {...register('password', {
           required: 'Password is required',
-          minLength: {
-            value: 6,
-            message: 'Password must be at least 6 characters',
+          pattern: {
+            value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/,
+            message:
+              'Password must contain at least 1 lowercase letter, 1 uppercase letter, 1 number, and be at least 8 characters long',
           },
         })}
         error={Boolean(errors.password)}
         helperText={errors.password?.message}
         margin="normal"
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton onClick={handleClickShowPassword}>
+                {showPassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
+      />
+
+      <TextField
+        fullWidth
+        label="Repeat Password"
+        type={showRepeatPassword ? 'text' : 'password'}
+        {...register('passwordRepeat', {
+          required: 'Repeat Password is required',
+          validate: (value) => value === watch('password') || 'Passwords do not match',
+        })}
+        error={Boolean(errors.passwordRepeat)}
+        helperText={errors.passwordRepeat?.message}
+        margin="normal"
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton onClick={handleClickShowRepeatPassword}>
+                {showRepeatPassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
       />
 
       <FormControlLabel
         control={<Checkbox {...register('terms', { required: 'You must accept the terms and conditions' })} color="primary" />}
-        label="I accept the Terms and Conditions"
+        label={
+          <Typography variant="body2">
+            I accept the <Link href="/terms" target="_blank">Terms and Conditions</Link>
+          </Typography>
+        }
         sx={{ mt: 1, textAlign: 'left' }}
       />
-      {errors.terms && <Typography color="error">{errors.terms.message}</Typography>}
-      
+      {errors.terms && (
+        <Typography color="error" variant="body2">
+          {errors.terms.message}
+        </Typography>
+      )}
+
       <Button type="submit" variant="contained" color="warning" fullWidth sx={{ mt: 2 }}>
         Sign Up
       </Button>

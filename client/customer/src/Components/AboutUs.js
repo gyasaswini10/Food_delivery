@@ -1,5 +1,7 @@
 import React from 'react';
-import { Container, Typography, Grid, Card, CardContent } from '@mui/material';
+import { Container, Grid, Card, CardContent, Typography, Link } from '@mui/material';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 const AboutUs = () => {
   return (
@@ -7,53 +9,53 @@ const AboutUs = () => {
       <Typography variant="h3" align="center" gutterBottom>
         About Us
       </Typography>
-      <Typography variant="h6" align="center" paragraph>
-        Welcome to K L World! We are dedicated to providing exceptional services and experiences tailored to our customers' needs.
+      <Typography variant="body1" align="center" paragraph style={{ marginBottom: '40px', fontSize: '1.1rem' }}>
+        Welcome to our food delivery project! Our team is dedicated to creating a seamless platform that enhances your food ordering experience. With real-time tracking and user-friendly design, we aim to connect you with your favorite restaurants effortlessly.
       </Typography>
       
-      <Typography variant="h5" align="center" gutterBottom>
-        Our Mission
-      </Typography>
-      <Typography variant="body1" align="center" paragraph>
-        Our mission is to deliver top-quality services that exceed our customers' expectations and create lasting memories.
-      </Typography>
-
-      <Typography variant="h5" align="center" gutterBottom>
-        Meet Our Team
-      </Typography>
       <Grid container spacing={4} justifyContent="center">
+        
+        {/* Gurivi Reddy Yasaswini */}
         <Grid item xs={12} sm={4}>
           <Card variant="outlined" style={{ height: '100%', boxShadow: '0 3px 10px rgba(0,0,0,0.1)', borderRadius: '8px' }}>
             <CardContent>
-              <Typography variant="h6">John Doe</Typography>
-              <Typography variant="body2">CEO & Founder</Typography>
-              <Typography variant="body1" style={{ marginTop: '10px' }}>
-                John is a visionary leader with a passion for excellence and over 10 years of experience in the industry.
-              </Typography>
+              <h6>Gurivi Reddy Yasaswini</h6>
+              <Link href="https://www.linkedin.com/in/gurivi-reddy-yasaswini" target="_blank" style={{ marginRight: '10px' }}>
+                <LinkedInIcon sx={{ color: 'warning.main' }} />
+              </Link>
+              <Link href="https://github.com/YasaswiniReddy" target="_blank">
+                <GitHubIcon sx={{ color: 'warning.main' }} />
+              </Link>
             </CardContent>
           </Card>
         </Grid>
 
+        {/* Hima Honey Javvaji */}
         <Grid item xs={12} sm={4}>
           <Card variant="outlined" style={{ height: '100%', boxShadow: '0 3px 10px rgba(0,0,0,0.1)', borderRadius: '8px' }}>
             <CardContent>
-              <Typography variant="h6">Jane Smith</Typography>
-              <Typography variant="body2">Chief Operations Officer</Typography>
-              <Typography variant="body1" style={{ marginTop: '10px' }}>
-                Jane ensures smooth operations and strives for the best customer experiences every day.
-              </Typography>
+              <h6>Hima Honey Javvaji</h6>
+              <Link href="https://www.linkedin.com/in/hima-honey-javvaji" target="_blank" style={{ marginRight: '10px' }}>
+                <LinkedInIcon sx={{ color: 'warning.main' }} />
+              </Link>
+              <Link href="https://github.com/HimaHoney" target="_blank">
+                <GitHubIcon sx={{ color: 'warning.main' }} />
+              </Link>
             </CardContent>
           </Card>
         </Grid>
 
+        {/* J. Jyothi Keerthana */}
         <Grid item xs={12} sm={4}>
           <Card variant="outlined" style={{ height: '100%', boxShadow: '0 3px 10px rgba(0,0,0,0.1)', borderRadius: '8px' }}>
             <CardContent>
-              <Typography variant="h6">Mike Johnson</Typography>
-              <Typography variant="body2">Marketing Manager</Typography>
-              <Typography variant="body1" style={{ marginTop: '10px' }}>
-                Mike connects our services with the community, making sure everyone knows about our offerings.
-              </Typography>
+              <h6>J. Jyothi Keerthana</h6>
+              <Link href="https://www.linkedin.com/in/jyothi-keerthana" target="_blank" style={{ marginRight: '10px' }}>
+                <LinkedInIcon sx={{ color: 'warning.main' }} />
+              </Link>
+              <Link href="https://github.com/JyothiKeerthana" target="_blank">
+                <GitHubIcon sx={{ color: 'warning.main' }} />
+              </Link>
             </CardContent>
           </Card>
         </Grid>

@@ -25,19 +25,22 @@ function Profile() {
           sx={{ width: 100, height: 100, margin: 'auto', mb: 2 }}
         />
         <Typography variant="h5" component="h1" sx={{ mb: 1 }}>
-          Jane Smith
+          Ram
         </Typography>
         <Typography variant="h6" component="h2" sx={{ mb: 2 }}>
           User
         </Typography>
         <Typography variant="body2" sx={{ color: '#777', mb: 1 }}>
-          janesmith@example.com
+          ram@example.com
         </Typography>
         <Typography variant="body2" sx={{ color: '#777', mb: 1 }}>
-          +9876543210
+          +1234567890
         </Typography>
-        <Typography variant="body2" sx={{ color: '#777' }}>
-          456 Delivery Avenue, City, Country
+        <Typography variant="body2" sx={{ color: '#777', mb: 1 }}>
+          India
+        </Typography>
+        <Typography variant="body2" sx={{ color: '#777', mb: 1 }}>
+          Mumbai
         </Typography>
       </Paper>
     </Box>
