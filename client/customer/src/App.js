@@ -14,17 +14,18 @@ import Footer from './Components/Footer'; // Ensure Footer is exported correctly
 import Aboutus from './Components/AboutUs';
 import Privacy from './Components/Privacy';
 import Contact from './Components/Contact';
-import Payment from './Components/Payment';
+//import Payment from './Components/Payment';
 import Terms from './Components/Terms';
 import ForgotPassword from './Components/ForgotPassword';
-
-
+import ScrollableCards from './Components/ScrollableCards';
+import ExploreDishes from './Components/ExploreDishes';
+import Menu1 from './Components/Menu1';
+import Payment from './Components/Payment';
 const App = () => {
   return (
     <Router>
       <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', overflowX: 'hidden' }}>
         <ResponsiveAppBar />
-      
         <div style={{ flex: 1, overflowY: 'auto' }}>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -42,12 +43,11 @@ const App = () => {
            <Route path='/Contact' element={<Contact/>}/>
            <Route path="/terms" element={<Terms/>}/>
            <Route path='/ForgotPassword' element={<ForgotPassword/>}/>
-         <Route path='/Payment' element={<Payment/>}/>
+           <Route path="/details/:id" element={<Menu1 />} />
+           <Route path="/Payment" element={<Payment />} />
           </Routes>
         </div>
-     
-        <Footer />
-        
+
       </div>
     </Router>
   );
