@@ -1,0 +1,33 @@
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    padding: 20px;
+    scroll-behavior: smooth;
+}
+
+.scroll-container::-webkit-scrollbar {
+    display: none; /* Hides the scrollbar for better aesthetics */
+}
+
+.scroll-item {
+    flex: 0 0 auto;
+    margin: 0 10px;
+    text-align: center; /* Center the text */
+}
+
+.item-image {
+    width: 150px; /* Fixed width for uniformity */
+    height: 150px; /* Fixed height for uniformity */
+    object-fit: cover;
+    border-radius: 50%; /* Keeps image circular */
+}
+
+.item-title {
+    margin-top: 10px; /* Space between the image and title */
+    font-size: 1rem;
+    color: #333;
+    text-align: center;
+    white-space: nowrap; /* Prevents title from wrapping */
+}
+
+  

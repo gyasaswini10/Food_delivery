@@ -17,7 +17,7 @@ import Contact from './Components/Contact';
 import Payment from './Components/Payment';
 import Terms from './Components/Terms';
 import ForgotPassword from './Components/ForgotPassword';
-import Notification from './Components/Notification';
+
 
 const App = () => {
   return (
@@ -48,7 +48,6 @@ const App = () => {
      
         <Footer />
         
-        <Notification/>
       </div>
     </Router>
   );

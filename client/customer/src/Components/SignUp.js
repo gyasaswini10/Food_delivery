@@ -12,7 +12,6 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-
 // Importing countries and cities from JSON files
 import countriesData from './JsonFiles/Countries.json';
 import citiesData from './JsonFiles/Cities.json';
@@ -186,7 +185,7 @@ function SignUp() {
         control={<Checkbox {...register('terms', { required: 'You must accept the terms and conditions' })} color="primary" />}
         label={
           <Typography variant="body2">
-            I accept the <Link href="/terms" target="_blank">Terms and Conditions</Link>
+            I accept the <Link href="/terms" >Terms and Conditions</Link>
           </Typography>
         }
         sx={{ mt: 1, textAlign: 'left' }}
