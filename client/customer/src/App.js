@@ -20,7 +20,16 @@ import ForgotPassword from './Components/ForgotPassword';
 import ScrollableCards from './Components/ScrollableCards';
 import ExploreDishes from './Components/ExploreDishes';
 import Menu1 from './Components/Menu1';
+import Menu2 from './Components/Menu2';
+import Menu3 from './Components/Menu3';
+import Menu4 from './Components/Menu4';
 import Payment from './Components/Payment';
+import Notifications from './Components/Notifications';
+import RealTimeTracking from './Components/RealTimeTracking ';
+//npm install react-leaflet leaflet
+//npm install qrcode
+//npm install react-router-dom @mui/material @emotion/react @emotion/styled
+//npm i @mui/icons-material axios react-hook-form
 const App = () => {
   return (
     <Router>
@@ -44,10 +53,15 @@ const App = () => {
            <Route path="/terms" element={<Terms/>}/>
            <Route path='/ForgotPassword' element={<ForgotPassword/>}/>
            <Route path="/details/:id" element={<Menu1 />} />
+           <Route path="/details/2" element={<Menu2 />} />
+           <Route path="/details/3" element={<Menu3 />} />
+           <Route path="/details/4" element={<Menu4 />} />
            <Route path="/Payment" element={<Payment />} />
+           <Route path='/notifications' element={<Notifications/>}/>
+           <Route path='/RealTimeTracking' element={<RealTimeTracking/>}/>
           </Routes>
         </div>
-
+<Footer/>
       </div>
     </Router>
   );

@@ -35,7 +35,7 @@ const Contact = () => {
           <Card variant="outlined" style={{ height: '100%', boxShadow: '0 3px 10px rgba(0,0,0,0.1)', borderRadius: '8px' }}>
             <CardContent>
               <Typography variant="h5">Phone</Typography>
-              <Typography variant="body2">+91 571-457-3231</Typography>
+              <Typography variant="body2"> +91-181-010-101 </Typography>
             </CardContent>
           </Card>
         </Grid>

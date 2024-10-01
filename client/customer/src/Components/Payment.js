@@ -10,25 +10,38 @@ import {
   Grid,
 } from '@mui/material';
 import { QRCodeSVG } from 'qrcode.react';
+import { Link } from 'react-router-dom';
 
 const Payment = () => {
   const [paymentMethod, setPaymentMethod] = useState('cash');
   const [upiID, setUpiID] = useState('');
+  const [upiConfirmID, setUpiConfirmID] = useState(''); // State for UPI confirmation
   const [error, setError] = useState('');
+  const [confirmError, setConfirmError] = useState(''); // State for confirmation error
 
   const handlePaymentChange = (event) => {
     setPaymentMethod(event.target.value);
-    setUpiID(''); // Clear UPI ID on method change
-    setError(''); // Clear error on method change
+    setUpiID('');
+    setUpiConfirmID('');
+    setError('');
+    setConfirmError('');
   };
 
   const handleUPIChange = (e) => {
-    const value = e.target.value;
-    if (/^[a-zA-Z0-9._]+@[a-zA-Z0-9]+$/.test(value) || value === '') {
-      setError('');
-      setUpiID(value);
-    } else {
+    setUpiID(e.target.value); // Simply set the value without immediate validation
+    if (!/^[a-zA-Z0-9._]+@[a-zA-Z0-9]+$/.test(e.target.value) && e.target.value !== '') {
       setError('Please enter a valid UPI ID.');
+    } else {
+      setError('');
+    }
+  };
+
+  const handleUPIConfirmChange = (e) => {
+    setUpiConfirmID(e.target.value);
+    if (e.target.value !== upiID) {
+      setConfirmError('UPI IDs do not match.');
+    } else {
+      setConfirmError('');
     }
   };
 
@@ -65,16 +78,27 @@ const Payment = () => {
       {paymentMethod === 'upi' && (
         <Box mt={2}>
           <Typography variant="h6">Pay through UPI</Typography>
-          <TextField 
-            label="Enter UPI ID" 
-            variant="outlined" 
-            fullWidth 
-            margin="normal" 
-            value={upiID} 
-            onChange={handleUPIChange} 
-            required 
+          <TextField
+            label="Enter UPI ID"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            value={upiID}
+            onChange={handleUPIChange}
+            required
             error={!!error}
             helperText={error}
+          />
+          <TextField
+            label="Confirm UPI ID"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            value={upiConfirmID}
+            onChange={handleUPIConfirmChange}
+            required
+            error={!!confirmError}
+            helperText={confirmError}
           />
         </Box>
       )}
@@ -93,9 +117,11 @@ const Payment = () => {
         </Box>
       )}
 
-      <Button variant="contained" color="warning" style={{ marginTop: '20px' }}>
-        {paymentMethod === 'cash' ? 'Complete Order' : 'Make Payment'}
-      </Button>
+      <Link to="/RealTimeTracking" style={{ textDecoration: 'none' }}>
+        <Button variant="contained" color="warning" style={{ marginTop: '20px' }}>
+          {paymentMethod === 'cash' ? 'Complete Order' : 'Make Payment'}
+        </Button>
+      </Link>
     </Box>
   );
 };

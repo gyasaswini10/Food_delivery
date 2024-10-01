@@ -9,10 +9,11 @@ import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import NotificationsIcon from '@mui/icons-material/Notifications'; // Import the Notifications icon
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import food from './food4.png'; // Adjust the path to your logo
-import logo from './food2.png';
+import Foodhomepage from './Foodhomepage.png'; // Adjust the path to your logo
+import logo from './FinalLogo.jpg';
 
 function ResponsiveAppBar() {
   const location = useLocation();
@@ -47,11 +48,13 @@ function ResponsiveAppBar() {
             left: 0,
             width: '100%',
             height: '80vh',
-            backgroundImage: `url(${food})`,
+            backgroundImage: `url(${Foodhomepage})`,
             backgroundSize: 'cover',
             backgroundPosition: 'top center',
             backgroundRepeat: 'no-repeat',
             zIndex: -1,
+            
+        opacity:0.7
           }}
         />
       )}
@@ -112,6 +115,13 @@ function ResponsiveAppBar() {
           }}
         />
 
+        {/* Notification Icon */}
+        <RouterLink to="/notifications" style={{ textDecoration: 'none', color: 'black', margin: '0 4px' }}>
+          <IconButton color="inherit">
+            <NotificationsIcon sx={{ color: 'black', fontSize: '30px' }} />
+          </IconButton>
+        </RouterLink>
+
         {/* Login and Sign Up Buttons */}
         <RouterLink to="/login" style={{ textDecoration: 'none', color: 'black' }}>
           <Button color="inherit" sx={{ fontSize: '12px', padding: '6px 8px', margin: '0 4px', textTransform: 'none' }}>
@@ -120,14 +130,12 @@ function ResponsiveAppBar() {
         </RouterLink>
 
         <Box sx={{ ml: 1 }}>
-          <RouterLink to="/signup" style={{  color: 'black' }}>
+          <RouterLink to="/signup" style={{ color: 'black' }}>
             <Button
               sx={{
-                
                 color: 'black',
                 fontSize: '12px',
                 padding: '6px 8px',
-               
                 textTransform: 'none',
               }}
             >

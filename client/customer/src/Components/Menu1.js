@@ -81,59 +81,59 @@ const categories = [
   },
   { name: 'Starters', 
     items: [
-      { id: 1, name: 'Paneer 65', image: m21 , price: 100, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-      { id: 2, name: 'Chicken Lollipop', image: m22 , price: 100, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-      { id: 3, name: 'Chilli Baby Corn', image: m23 , price: 120, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-      { id: 4, name: 'Spring Rolls', image: m24 , price: 120, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-      { id: 5, name: 'Chicken 65', image: m25 , price: 110, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
+      { id: 1, name: 'Paneer 65', image: m21 , price: 100, votes: 707, description: 'Paneer 65 is crispy, spiced paneer bites.', isBestseller: true, isVeg: true },
+      { id: 2, name: 'Chicken Lollipop', image: m22 , price: 100, votes: 707, description: 'Chicken lollipop is crispy, spiced chicken wings.', isBestseller: true, isVeg: false },
+      { id: 3, name: 'Chilli Baby Corn', image: m23 , price: 120, votes: 707, description: 'Chilli baby corn tossed in spicy sauce and peppers.', isBestseller: true, isVeg: true },
+      { id: 4, name: 'Spring Rolls', image: m24 , price: 120, votes: 707, description: 'Spring rolls stuffed with vegetables and fried crispy.', isBestseller: true, isVeg: true },
+      { id: 5, name: 'Chicken 65', image: m25 , price: 110, votes: 707, description: 'Chicken 65 is spicy, fried chicken with flavorful seasoning.', isBestseller: true, isVeg: false },
     ] },
   { name: 'Soups', 
     items: [
-      { id: 1, name: 'Tomato Soup', image: m31 , price: 90, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-      { id: 2, name: 'SweetCorn Soup', image: m32 , price: 90, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-      { id: 3, name: 'Vegetable Soup', image: m33 , price: 100, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
+      { id: 1, name: 'Tomato Soup', image: m31 , price: 90, votes: 707, description: 'Tomato soup with rich, tangy flavors.', isBestseller: true, isVeg: true },
+      { id: 2, name: 'SweetCorn Soup', image: m32 , price: 90, votes: 707, description: 'Sweet corn soup with creamy, mild flavors.', isBestseller: true, isVeg: true },
+      { id: 3, name: 'Vegetable Soup', image: m33 , price: 90, votes: 707, description: 'Vegetable soup with fresh, hearty vegetables.', isBestseller: true, isVeg: true },
     ] },
   { name: 'Rotis', 
     items: [
-      { id: 1, name: 'Pulka', image: m41 , price: 30, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-      { id: 2, name: 'Butter Naan', image: m42 , price: 60, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-      { id: 3, name: 'rumali Roti', image: m43 , price: 60, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
+      { id: 1, name: 'Pulka', image: m41 , price: 30, votes: 707, description: 'Pulka is soft, whole wheat flatbread.', isBestseller: true, isVeg: true },
+      { id: 2, name: 'Butter Naan', image: m42 , price: 60, votes: 707, description: 'Butter naan is soft, fluffy flatbread with butter.', isBestseller: true, isVeg: true },
+      { id: 3, name: 'rumali Roti', image: m43 , price: 60, votes: 707, description: 'Rumali roti is thin, soft flatbread, handkerchief-style.', isBestseller: true, isVeg: true },
     ] },
   { name: 'Rice and Noodles', items: [
-    { id: 1, name: 'Paneer Biryani', image: m51 , price: 160, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-    { id: 2, name: 'Chicken Biryani', image: m52 , price: 160, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-    { id: 3, name: 'Veg Noodles', image: m53 , price: 120, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-    { id: 4, name: 'Prawn Biryani', image: m54 , price: 180, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-    { id: 5, name: 'Fried-Rice', image: m55 , price: 110, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-    { id: 6, name: 'Mushroom Fried-Rice', image: m56 , price: 120, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
+    { id: 1, name: 'Paneer Biryani', image: m51 , price: 160, votes: 707, description: 'Paneer biryani is fragrant rice with spiced paneer.', isBestseller: true, isVeg: true },
+    { id: 2, name: 'Chicken Biryani', image: m52 , price: 160, votes: 707, description: 'Chicken biryani is aromatic rice with tender chicken pieces.', isBestseller: true, isVeg: false },
+    { id: 3, name: 'Veg Noodles', image: m53 , price: 120, votes: 707, description: 'Veg noodles stir-fried with fresh vegetables and spices.', isBestseller: true, isVeg: true },
+    { id: 4, name: 'Prawn Biryani', image: m54 , price: 180, votes: 707, description: 'Prawn biryani is fragrant rice with spiced prawns.', isBestseller: true, isVeg: false },
+    { id: 5, name: 'Fried-Rice', image: m55 , price: 110, votes: 707, description: 'Fried rice stir-fried with vegetables and soy sauce.', isBestseller: true, isVeg: true },
+    { id: 6, name: 'Mushroom Fried-Rice', image: m56 , price: 120, votes: 707, description: 'Mushroom fried rice with sautéed mushrooms and vegetables.', isBestseller: true, isVeg: true },
   ] },
   { name: 'Curries', 
     items: [
-      { id: 1, name: 'Mushroom Masala', image: m61 , price: 180, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-      { id: 2, name: 'Kaju Tomato', image: m62 , price: 200, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-      { id: 3, name: 'Paneer Kadai', image: m63 , price: 190, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-      { id: 4, name: 'Butter Chicken', image: m64 , price: 200, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-      { id: 5, name: 'Mutton Kheema', image: m65 , price: 220, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-      { id: 6, name: 'Malai Kofta', image: m66 , price: 190, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
+      { id: 1, name: 'Mushroom Masala', image: m61 , price: 180, votes: 707, description: 'Mushroom masala is spicy mushrooms in gravy.', isBestseller: true, isVeg: true },
+      { id: 2, name: 'Kaju Tomato', image: m62 , price: 200, votes: 707, description: 'Kaju tomato is cashews cooked in tomato gravy.', isBestseller: true, isVeg: true },
+      { id: 3, name: 'Paneer Kadai', image: m63 , price: 190, votes: 707, description: 'Paneer kadai is paneer in spicy tomato gravy.', isBestseller: true, isVeg: true },
+      { id: 4, name: 'Butter Chicken', image: m64 , price: 200, votes: 707, description: 'Butter chicken is creamy chicken in tomato sauce.', isBestseller: true, isVeg: false },
+      { id: 5, name: 'Mutton Kheema', image: m65 , price: 220, votes: 707, description: 'Mutton kheema is spiced mutton cooked tender.', isBestseller: true, isVeg: false },
+      { id: 6, name: 'Malai Kofta', image: m66 , price: 190, votes: 707, description: 'Malai kofta is soft dumplings in creamy sauce.', isBestseller: true, isVeg: true },
     ] },
   { name: 'Desserts', items: [
-    { id: 1, name: 'Cheese Cake', image: m71 , price: 100, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-    { id: 2, name: 'Moose Tracks', image: m72 , price: 100, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-    { id: 3, name: 'Pistachio', image: m73 , price: 100, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-    { id: 4, name: 'Chocolate ', image: m74 , price: 100, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-    { id: 5, name: 'Red Velvet', image: m75 , price: 90, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-    { id: 6, name: 'Black Currant', image: m76 , price: 90, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
+    { id: 1, name: 'Cheese Cake', image: m71 , price: 100, votes: 707, description: 'Cheesecake is a dessert with creamy cheese filling.', isBestseller: true, isVeg: true },
+    { id: 2, name: 'Moose Tracks', image: m72 , price: 100, votes: 707, description: 'Moose Tracks is a chocolate ice cream.', isBestseller: true, isVeg: true },
+    { id: 3, name: 'Pistachio', image: m73 , price: 100, votes: 707, description: 'Pistachio is a creamy ice cream with pistachio nuts.', isBestseller: true, isVeg: true },
+    { id: 4, name: 'Chocolate ', image: m74 , price: 100, votes: 707, description: 'Chocolate ice cream with rich, creamy flavor.', isBestseller: true, isVeg: true },
+    { id: 5, name: 'Red Velvet', image: m75 , price: 90, votes: 707, description: 'Red velvet cake with cream cheese frosting.', isBestseller: true, isVeg: true },
+    { id: 6, name: 'Black Currant', image: m76 , price: 90, votes: 707, description: 'Black currant with tangy berry flavor.', isBestseller: true, isVeg: true },
   ] },
   { name: 'Beverages', 
     items: [
-      { id: 1, name: 'Water', image: m81 , price: 20, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-      { id: 2, name: 'Tea', image: m82 , price: 30, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-      { id: 3, name: 'Coffee', image: m83 , price: 30, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-      { id: 4, name: 'Lassi', image: m84 , price: 25, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-      { id: 5, name: 'Pink Lady', image: m85 , price: 100, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-      { id: 6, name: 'Cindrella', image: m86 , price: 100, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-      { id: 7, name: 'Lemon Tea', image: m87 , price: 40, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
-      { id: 8, name: 'Caramel Macchaito', image: m88 , price: 100, votes: 707, description: 'Idli slowly cooked on steam.', isBestseller: true, isVeg: true },
+      { id: 1, name: 'Water', image: m81 , price: 20, votes: 707, description: 'Water is clear, tasteless, and essential for life.', isBestseller: true, isVeg: true },
+      { id: 2, name: 'Tea', image: m82 , price: 30, votes: 707, description: 'Tea is a brewed beverage made from tea leaves.', isBestseller: true, isVeg: true },
+      { id: 3, name: 'Coffee', image: m83 , price: 30, votes: 707, description: 'Coffee is a brewed drink made from roasted coffee beans.', isBestseller: true, isVeg: true },
+      { id: 4, name: 'Lassi', image: m84 , price: 25, votes: 707, description: 'Lassi is a refreshing yogurt drink.', isBestseller: true, isVeg: true },
+      { id: 5, name: 'Pink Lady', image: m85 , price: 100, votes: 707, description: 'Pink Lady is a fruity cocktail with apple and cranberry flavors.', isBestseller: true, isVeg: true },
+      { id: 6, name: 'Cindrella', image: m86 , price: 100, votes: 707, description: 'Cinderella is a mocktail with orange and pineapple flavors.', isBestseller: true, isVeg: true },
+      { id: 7, name: 'Lemon Tea', image: m87 , price: 40, votes: 707, description: 'Lemon tea is a refreshing  made with tea and lemon.', isBestseller: true, isVeg: true },
+      { id: 8, name: 'Caramel Macchaito', image: m88 , price: 100, votes: 707, description: 'Caramel macchiato  with caramel and milk.', isBestseller: true, isVeg: true },
     ] }
 ];
 
@@ -206,7 +206,7 @@ const RestaurantDetails = () => {
             {restaurantData.name}
           </Typography>
           <IconButton color="inherit" onClick={toggleDrawer}>
-            <Badge badgeContent={cart.length} color="secondary"> {/* Added Badge to show cart count */}
+            <Badge badgeContent={cart.length} color="warning"> {/* Added Badge to show cart count */}
               <ShoppingCart />
             </Badge>
           </IconButton>
@@ -214,25 +214,25 @@ const RestaurantDetails = () => {
       </AppBar>
 
       <Box my={4}>
-        <Typography variant="subtitle1" color="text.secondary" gutterBottom>
+        <Typography variant="subtitle1" color="text.warning" gutterBottom>
           {restaurantData.cuisine}
         </Typography>
-        <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+        <Typography variant="subtitle2" color="text.warning" gutterBottom>
           {restaurantData.location}
         </Typography>
-        <Typography variant="body2" color="success.main" gutterBottom>
+        <Typography variant="body2" color="warning" gutterBottom>
           Open now - {restaurantData.openingHours} <AccessTime fontSize="small" />
         </Typography>
 
         <Grid container spacing={2} mt={2}>
           <Grid item>
-            <Paper elevation={0} sx={{ p: 1, bgcolor: 'success.light', color: 'white' }}>
+            <Paper elevation={0} sx={{ p: 1, bgcolor: 'warning.light', color: 'white' }}>
               <Typography variant="h6">{restaurantData.diningRating}★</Typography>
               <Typography variant="caption">{restaurantData.diningRatingsCount} Dining Ratings</Typography>
             </Paper>
           </Grid>
           <Grid item>
-            <Paper elevation={0} sx={{ p: 1, bgcolor: 'success.light', color: 'white' }}>
+            <Paper elevation={0} sx={{ p: 1, bgcolor: 'warning.light', color: 'white' }}>
               <Typography variant="h6">{restaurantData.deliveryRating}★</Typography>
               <Typography variant="caption">{restaurantData.deliveryRatingsCount} Delivery Ratings</Typography>
             </Paper>
@@ -301,7 +301,10 @@ const RestaurantDetails = () => {
                           <Typography variant="body2" color="text.secondary">
                             {item.votes} Votes
                           </Typography>
-                          <Button onClick={() => handleAddToCart(item)} startIcon={<Add />}>Add to Cart</Button>
+                          <Button onClick={() => handleAddToCart(item)} startIcon={<Add />} color="wa">
+  Add to Cart
+</Button>
+
                         </CardContent>
                       </Card>
                     </Grid>
@@ -330,7 +333,7 @@ const RestaurantDetails = () => {
           <Divider />
           <Box sx={{ p: 2 }}>
             <Typography variant="h6">Total: {calculateTotal()}₹</Typography>
-            <Button variant="contained" color="primary" onClick={handlePaymentClick}>Proceed to Payment</Button>
+            <Button variant="contained" color="warning" onClick={handlePaymentClick}>Proceed to Payment</Button>
           </Box>
         </Box>
       </Drawer>
@@ -339,4 +342,3 @@ const RestaurantDetails = () => {
 };
 
 export default RestaurantDetails;
-

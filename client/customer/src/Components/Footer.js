@@ -5,8 +5,8 @@ const Footer = () => {
   return (
     <footer
       style={{
-        backgroundColor: '#333',
-        color: 'white',
+        backgroundColor: '#fa8128',
+        color: 'black',
         padding: '20px',
         width: '100%',
         marginTop: 'auto',
@@ -16,7 +16,7 @@ const Footer = () => {
         <Grid container spacing={4}>
           <Grid item xs={12} sm={6}>
             <Typography variant="h6" gutterBottom>
-              Company
+              Delight Zone
             </Typography>
             <Typography>
               <Link href="/Aboutus" color="inherit" underline="hover">
@@ -33,7 +33,7 @@ const Footer = () => {
             <Typography variant="h6" gutterBottom>
               Get in Touch
             </Typography>
-            <Typography>📞 91-1010101010</Typography>
+            <Typography>Tool Free: +91-181-010-101 </Typography>
             <Typography>
               <Link href="/Contact" color="inherit" underline="hover">
                 Contact Us
@@ -42,7 +42,7 @@ const Footer = () => {
           </Grid>
         </Grid>
         <Typography variant="body2" align="center" style={{ marginTop: '20px' }}>
-          © {new Date().getFullYear()} Your Company Name. All rights reserved.
+          © {new Date().getFullYear()} Delight Zone. All rights reserved.
         </Typography>
       </Container>
     </footer>

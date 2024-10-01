@@ -73,14 +73,27 @@ const Login = () => {
       <Button type="submit" variant="contained" color="warning" fullWidth sx={{ mt: 2 }}>
         Login
       </Button>
-     
 
       <Box sx={{ mt: 2, textAlign: 'center' }}>
-        <Link href="#" variant="body2">
+        <Link
+          href="#"
+          variant="body2"
+          sx={{
+            textDecoration: 'none', // Remove underline
+            color: 'primary.main', // Add color (optional)
+          }}
+        >
           Forgot Password?
         </Link>
         <Box mt={1}>
-          <Link href="/SignUp" variant="body2">
+          <Link
+            href="/SignUp"
+            variant="body2"
+            sx={{
+              textDecoration: 'none', // Remove underline
+              color: 'primary.main', // Add color (optional)
+            }}
+          >
             Don't have an account? Sign Up
           </Link>
         </Box>

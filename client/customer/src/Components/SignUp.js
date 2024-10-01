@@ -117,8 +117,7 @@ function SignUp() {
           />
         )}
       />
-
-      <Autocomplete
+<Autocomplete
         options={citiesData.Cities}
         renderInput={(params) => (
           <TextField
@@ -135,12 +134,23 @@ function SignUp() {
 
       <TextField
         fullWidth
+        label="Address"
+        {...register('address', {
+          required: 'Address is required',
+        })}
+        error={Boolean(errors.address)}
+        helperText={errors.address?.message}
+        margin="normal"
+      />
+
+      <TextField
+        fullWidth
         label="Password"
         type={showPassword ? 'text' : 'password'}
         {...register('password', {
           required: 'Password is required',
           pattern: {
-            value: /^(?=.[a-z])(?=.[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/,
+            value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/,
             message:
               'Password must contain at least 1 lowercase letter, 1 uppercase letter, 1 number, and be at least 8 characters long',
           },
@@ -185,7 +195,7 @@ function SignUp() {
         control={<Checkbox {...register('terms', { required: 'You must accept the terms and conditions' })} color="primary" />}
         label={
           <Typography variant="body2">
-            I accept the <Link href="/terms" >Terms and Conditions</Link>
+            I accept the <Link href="/terms" sx={{ textDecoration: 'none' }}>Terms and Conditions</Link>
           </Typography>
         }
         sx={{ mt: 1, textAlign: 'left' }}
@@ -201,7 +211,7 @@ function SignUp() {
       </Button>
 
       <Box sx={{ mt: 2, textAlign: 'center' }}>
-        <Link href="/Login" variant="body2">
+        <Link href="/Login" variant="body2" sx={{ textDecoration: 'none' }}>
           Already have an account? Login
         </Link>
       </Box>

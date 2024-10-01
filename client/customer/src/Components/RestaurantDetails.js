@@ -3,9 +3,9 @@ import FoodCardList from './FoodCardList';
 import Container from '@mui/material/Container';
 import id6 from './id6.webp';
 import id5 from './id5.jpg';
-import id4 from './id4.jpg';
+import id4 from './id4.jpeg';
 import id1 from './id1.webp';
-import id2 from './id2.png';
+import id2 from './id2.jpg';
 import id3 from './id3.jpg';
 const RestaurantDetails = () => {
     const foodItems = [
@@ -20,7 +20,7 @@ const RestaurantDetails = () => {
         },
         {
             id: 2,
-            title: "Eat n Play",
+            title: "Dominos Pizza",
             imageUrl: id2, // Update with actual image URL
             offer: "₹75 OFF",
             rating: "4.2 ★",
@@ -29,7 +29,7 @@ const RestaurantDetails = () => {
         },
         {
             id: 3,
-            title: "Sri Kanya",
+            title: "Ibaco",
             imageUrl: id3, // Update with actual image URL
             offer: "₹100 OFF",
             rating: "4.3 ★",
@@ -38,7 +38,7 @@ const RestaurantDetails = () => {
         },
         {
             id: 4,
-            title: "Shelton",
+            title: "Milkshake & More",
             imageUrl: id4, // Update with actual image URL
             offer: "30% OFF",
             rating: "4.3 ★",

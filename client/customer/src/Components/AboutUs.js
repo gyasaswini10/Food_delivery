@@ -20,10 +20,10 @@ const AboutUs = () => {
           <Card variant="outlined" style={{ height: '100%', boxShadow: '0 3px 10px rgba(0,0,0,0.1)', borderRadius: '8px' }}>
             <CardContent>
               <h6>Gurivi Reddy Yasaswini</h6>
-              <Link href="https://www.linkedin.com/in/gurivi-reddy-yasaswini" target="_blank" style={{ marginRight: '10px' }}>
+              <Link href="https://www.linkedin.com/in/yasaswini2005/" target="_blank" style={{ marginRight: '10px' }}>
                 <LinkedInIcon sx={{ color: 'warning.main' }} />
               </Link>
-              <Link href="https://github.com/YasaswiniReddy" target="_blank">
+              <Link href="https://github.com/gyasaswini10" target="_blank">
                 <GitHubIcon sx={{ color: 'warning.main' }} />
               </Link>
             </CardContent>
@@ -35,10 +35,10 @@ const AboutUs = () => {
           <Card variant="outlined" style={{ height: '100%', boxShadow: '0 3px 10px rgba(0,0,0,0.1)', borderRadius: '8px' }}>
             <CardContent>
               <h6>Hima Honey Javvaji</h6>
-              <Link href="https://www.linkedin.com/in/hima-honey-javvaji" target="_blank" style={{ marginRight: '10px' }}>
+              <Link href="https://www.linkedin.com/in/hima-honey-javvaji-024227329/" target="_blank" style={{ marginRight: '10px' }}>
                 <LinkedInIcon sx={{ color: 'warning.main' }} />
               </Link>
-              <Link href="https://github.com/HimaHoney" target="_blank">
+              <Link href="https://github.com/HimahoneyJavvaji" target="_blank">
                 <GitHubIcon sx={{ color: 'warning.main' }} />
               </Link>
             </CardContent>
@@ -50,10 +50,10 @@ const AboutUs = () => {
           <Card variant="outlined" style={{ height: '100%', boxShadow: '0 3px 10px rgba(0,0,0,0.1)', borderRadius: '8px' }}>
             <CardContent>
               <h6>J. Jyothi Keerthana</h6>
-              <Link href="https://www.linkedin.com/in/jyothi-keerthana" target="_blank" style={{ marginRight: '10px' }}>
+              <Link href="https://www.linkedin.com/in/keerthi-javvaji-71258527a/" target="_blank" style={{ marginRight: '10px' }}>
                 <LinkedInIcon sx={{ color: 'warning.main' }} />
               </Link>
-              <Link href="https://github.com/JyothiKeerthana" target="_blank">
+              <Link href="https://github.com/Keerthana-Javvaji" target="_blank">
                 <GitHubIcon sx={{ color: 'warning.main' }} />
               </Link>
             </CardContent>

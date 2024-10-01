@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, Typography, Avatar, Paper } from '@mui/material';
+import { Box, Typography, Paper } from '@mui/material';
+import image2 from './Icon1.png'; // Replace with actual image path
 
 function Profile() {
   return (
@@ -11,36 +12,36 @@ function Profile() {
       bgcolor="#f4f4f9"
     >
       <Paper
-        elevation={3}
+        elevation={0} // Set elevation to 0 to apply custom shadow
         sx={{
-          padding: '40px',
-          width: '300px',
-          textAlign: 'center',
+          width: '350px',
           borderRadius: '10px',
+          overflow: 'hidden',
+          textAlign: 'center',
+          boxShadow: 'rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px',
         }}
       >
-        <Avatar
-          alt="Profile"
-          src="https://via.placeholder.com/100"
-          sx={{ width: 100, height: 100, margin: 'auto', mb: 2 }}
-        />
-        <Typography variant="h5" component="h1" sx={{ mb: 1 }}>
-          Ram
+        {/* Top Images */}
+        <Box sx={{ display: 'flex', justifyContent: 'center', padding: 2 }}>
+          <img src={image2} alt="Image 2" style={{ width: '40%', borderRadius: '5px' }} />
+        </Box>
+
+        <Typography variant="h5" component="h1" sx={{ mt: 2 }}>
+          Account Details
         </Typography>
-        <Typography variant="h6" component="h2" sx={{ mb: 2 }}>
-          User
+
+        {/* User Information */}
+        <Typography variant="h6" component="h2" sx={{ mt: 2 }}>
+          Name: John Doe
         </Typography>
-        <Typography variant="body2" sx={{ color: '#777', mb: 1 }}>
-          ram@example.com
+        <Typography variant="body1" color="textSecondary" sx={{ mt: 1 }}>
+          Email: johndoe@example.com
         </Typography>
-        <Typography variant="body2" sx={{ color: '#777', mb: 1 }}>
-          +1234567890
+        <Typography variant="body1" color="textSecondary" sx={{ mt: 1 }}>
+          Phone: +1234567890
         </Typography>
-        <Typography variant="body2" sx={{ color: '#777', mb: 1 }}>
-          India
-        </Typography>
-        <Typography variant="body2" sx={{ color: '#777', mb: 1 }}>
-          Mumbai
+        <Typography variant="body1" color="textSecondary" sx={{ mt: 1 }}>
+          City: India
         </Typography>
       </Paper>
     </Box>
