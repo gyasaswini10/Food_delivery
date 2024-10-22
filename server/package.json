@@ -9,7 +9,6 @@
   "author": "Yasaswini,Himahoney,keerthana",
   "license": "ISC",
   "dependencies": {
-    "epress": "^0.0.1-security",
     "express": "^4.21.0"
   },
   "devDependencies": {
