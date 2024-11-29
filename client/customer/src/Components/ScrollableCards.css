@@ -1,34 +1,34 @@
 .scrollable-container {
     display: flex;
-    overflow-x: hidden; /* Hide horizontal scrollbar */
+    overflow-x: hidden; 
     white-space: nowrap;
     width: 100%;
-    position: relative; /* Added for container positioning */
+    position: relative; 
   }
   
   .card {
-    min-width: 250px; /* Adjust width as needed */
-    height: 180px; /* Adjust height as needed */
+    min-width: 250px; 
+    height: 180px; 
     margin: 10px;
     padding: 10px;
     background-color: #ffffff;
     border-radius: 8px;
     display: flex;
-    flex-direction: column; /* Stack image and text */
+    flex-direction: column; 
     align-items: center;
     justify-content: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
   
   .card-image {
-    width: 100%; /* Make image responsive */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 8px 8px 0 0; /* Rounded corners on top */
+    width: 100%; 
+    height: auto; 
+    border-radius: 8px 8px 0 0; 
   }
   
   .offer-text {
-    margin-top: 10px; /* Space between image and text */
-    text-align: center; /* Center text */
-    font-size: 1.2em; /* Adjust font size */
-    color: #333; /* Text color */
+    margin-top: 10px; 
+    text-align: center; 
+    font-size: 1.2em; 
+    color: #333; 
   }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Typography, Paper } from '@mui/material';
-import image2 from './Icon1.png'; // Replace with actual image path
+import image2 from './Icon1.png'; 
 
 function Profile() {
   return (
@@ -12,7 +12,7 @@ function Profile() {
       bgcolor="#f4f4f9"
     >
       <Paper
-        elevation={0} // Set elevation to 0 to apply custom shadow
+        elevation={0} 
         sx={{
           width: '350px',
           borderRadius: '10px',

@@ -4,20 +4,17 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-// Coordinates for KL University, Guntur
 const deliveryLocation = {
-  lat: 16.2995, // Latitude for KL University
-  lng: 80.5032, // Longitude for KL University
+  lat: 16.2995, 
+  lng: 80.5032, 
 };
 
-// Set up a custom icon for the marker (bike icon)
 const deliveryIcon = L.icon({
-  iconUrl: 'https://img.icons8.com/ios-filled/50/000000/motorcycle.png', // URL to your custom bike marker icon
-  iconSize: [30, 30], // Size of the icon
-  iconAnchor: [15, 30], // Anchor point of the icon
+  iconUrl: 'https://img.icons8.com/ios-filled/50/000000/motorcycle.png', 
+  iconSize: [30, 30], 
+  iconAnchor: [15, 30], 
 });
 
-// Define initial statuses
 const initialStatuses = [
   { stage: 'Order Placed', duration: 2000 },
   { stage: 'Preparing', duration: 4000 },
@@ -31,7 +28,6 @@ const RealTimeTracking = () => {
   const [progress, setProgress] = useState(0);
   const [intervalId, setIntervalId] = useState(null);
 
-  // Function to update the status
   const updateStatus = () => {
     if (statusIndex < initialStatuses.length) {
       setStatus(initialStatuses[statusIndex].stage);
@@ -46,7 +42,6 @@ const RealTimeTracking = () => {
   };
 
   useEffect(() => {
-    // Start tracking when the component mounts
     updateStatus();
 
     return () => {
@@ -55,15 +50,12 @@ const RealTimeTracking = () => {
   }, [statusIndex]);
 
   const handleTrackAgain = () => {
-    // Reset to initial state
     setStatusIndex(0);
     setStatus(initialStatuses[0].stage);
     setProgress(0);
 
-    // Clear any existing timeouts
     clearTimeout(intervalId);
     
-    // Restart the status update
     updateStatus();
   };
 

@@ -8,7 +8,7 @@ const Terms = () => {
   const navigate = useNavigate();
 
   const handleContactClick = () => {
-    navigate('/contact'); // Adjust the path based on your routing setup
+    navigate('/contact'); 
   };
 
   return (

@@ -142,7 +142,7 @@ const RestaurantDetails = () => {
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const [cart, setCart] = useState([]);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate(); 
 
   const handleTabChange = (event, newValue) => {
     setActiveTab(newValue);
@@ -194,13 +194,12 @@ const RestaurantDetails = () => {
   };
 
   const handlePaymentClick = () => {
-    // Navigate to the Payment component or perform payment logic here
-    navigate('/Payment'); // Adjust the path as needed
+    navigate('/Payment'); 
   };
 
   return (
     <Container maxWidth="lg">
-      <AppBar position="static">
+      <AppBar position="static" color="warning">
         <Toolbar>
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
             {restaurantData.name}
@@ -240,11 +239,11 @@ const RestaurantDetails = () => {
         </Grid>
 
         <Box sx={{ borderBottom: 1, borderColor: 'divider', mt: 4 }}>
-          <Tabs value={activeTab} onChange={handleTabChange} aria-label="restaurant tabs">
+          <Tabs value={activeTab} onChange={handleTabChange} aria-label="restaurant tabs" >
             <Tab label="Overview" />
             <Tab label="Order Online" />
             <Tab label="Reviews" />
-            <Tab label="Photos" />
+            <Tab label="Photos"/>
             <Tab label="Menu" />
           </Tabs>
         </Box>
@@ -294,14 +293,14 @@ const RestaurantDetails = () => {
                         />
                         <CardContent>
                           <Typography variant="h6">{item.name}</Typography>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="body2" color="text.warning">
                             {item.description}
                           </Typography>
                           <Typography variant="h5">{item.price}₹</Typography>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="body2" color="text.warning">
                             {item.votes} Votes
                           </Typography>
-                          <Button onClick={() => handleAddToCart(item)} startIcon={<Add />} color="wa">
+                          <Button onClick={() => handleAddToCart(item)} startIcon={<Add />} color="warning">
   Add to Cart
 </Button>
 

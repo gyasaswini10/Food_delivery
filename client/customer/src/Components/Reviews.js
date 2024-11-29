@@ -4,7 +4,7 @@ import { Box, TextField, Button, Typography, FormControl, FormLabel, RadioGroup,
 const Reviews = () => {
   const [reviewData, setReviewData] = useState({
     name: '',
-    dishName: '',  // Add dishName to state
+    dishName: '',  
     rating: '',
     review: ''
   });
@@ -23,7 +23,7 @@ const Reviews = () => {
     alert('Thank you for your review!');
     setReviewData({
       name: '',
-      dishName: '', // Reset dishName on submit
+      dishName: '', 
       rating: '',
       review: ''
     });
@@ -56,16 +56,18 @@ const Reviews = () => {
         onChange={handleChange}
         margin="normal"
         required
+        color='warning'
       />
 
       <TextField
         fullWidth
-        label="Dish Name"  // New field for dish name
+        label="Dish Name"  
         name="dishName"
         value={reviewData.dishName}
         onChange={handleChange}
         margin="normal"
         required
+        color='warning'
       />
 
       <FormControl component="fieldset" sx={{ marginTop: 2 }}>
@@ -76,11 +78,11 @@ const Reviews = () => {
           onChange={handleChange}
           row
         >
-          <FormControlLabel value="1" control={<Radio />} label="1 Star" />
-          <FormControlLabel value="2" control={<Radio />} label="2 Stars" />
-          <FormControlLabel value="3" control={<Radio />} label="3 Stars" />
-          <FormControlLabel value="4" control={<Radio />} label="4 Stars" />
-          <FormControlLabel value="5" control={<Radio />} label="5 Stars" />
+          <FormControlLabel value="1" control={<Radio color='warning'/>} label="1 Star" />
+          <FormControlLabel value="2" control={<Radio color='warning'/>} label="2 Stars" />
+          <FormControlLabel value="3" control={<Radio color='warning'/>} label="3 Stars" />
+          <FormControlLabel value="4" control={<Radio color='warning'/>} label="4 Stars" />
+          <FormControlLabel value="5" control={<Radio color='warning'/>} label="5 Stars" />
         </RadioGroup>
       </FormControl>
 
@@ -94,6 +96,7 @@ const Reviews = () => {
         multiline
         rows={4}
         required
+        color='warning'
       />
 
       <Button type="submit" variant="contained" color="warning" fullWidth sx={{ mt: 2 }}>

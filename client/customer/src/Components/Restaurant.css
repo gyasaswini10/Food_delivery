@@ -1,45 +1,44 @@
-  .restaurant-card {
+.restaurant-card {
     text-align: center;
-    border: 2px solid white; /* Optional border */
-    border-radius: 8px; /* Rounded corners */
+    border: 2px solid white; 
+    border-radius: 8px; 
     padding: 20px;
     background-color: white;
-    width: 100%; /* Use full width of the parent container */
-    max-width: 800px; /* Limit maximum width */
-    margin: 20px auto; /* Center the card with margin */
+    width: 100%; 
+    max-width: 800px; 
+    margin: 20px auto; 
   }
   
   .business-cards-container {
-    display: flex; /* Use flexbox to align cards in a row */
-    justify-content: space-between; /* Space between the cards */
-    margin-top: 20px; /* Space between the heading and business cards */
+    display: flex; 
+    justify-content: space-between; 
+    margin-top: 20px; 
   }
   
   .card2 {
-    flex: 1; /* Allow cards to grow and fill space */
-    margin: 0 10px; /* Space between cards */
-    padding: 20px; /* Padding inside the card */
-    border: 1px solid #ccc; /* Optional border for individual cards */
-    border-radius: 5px; /* Rounded corners */
-    background-color: white; /* Background color for individual cards */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow effect */
+    flex: 1; 
+    margin: 0 10px; 
+    padding: 20px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    background-color: white; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     height: 70px;
   }
   
   .card2 h1 {
-    font-size: 2em; /* Adjust font size for numbers */
-    margin: 0; /* Remove default margin */
+    font-size: 2em; 
+    margin: 0; 
   }
   
   .card2 p {
-    margin-top: 10px; /* Space between number and description */
-    font-size: 1em; /* Adjust font size for descriptions */
+    margin-top: 10px; 
+    font-size: 1em; 
   }
   
   
-  /* How it works section */
   .how-it-works {
-    background-image: url('./Food23.jpg'); /* Ensure this path is correct */
+    background-image: url('./Food23.jpg'); 
     background-size: cover;
     background-position: center;
     text-align: center;
@@ -61,56 +60,56 @@
     padding: 20px;
     border: 1px solid #eee;
     border-radius: 8px;
-    text-align: center; /* Center align text */
-    background-color: rgba(1, 1, 1, 0.5); /* Optional: Add semi-transparent background for better visibility */
+    text-align: center; 
+    background-color: rgba(1, 1, 1, 0.5); 
   }
   
   .step-icon {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px; /* Space below the icon */
+    margin-bottom: 20px; 
   }
   
   .step h3 {
-    color: #fff; /* Ensure the text is readable */
+    color: #fff; 
     margin-bottom: 10px;
   }
   
   .step p {
-    color: #f0f0f0; /* Light color for better contrast */
+    color: #f0f0f0; 
   }
   
 
 
   .testimonial-container {
-    position: relative; /* Positioning context for absolute positioning */
+    position: relative; 
     display: flex;
-    align-items: center; /* Center align items vertically */
-    justify-content: center; /* Center align items horizontally */
-    margin: 20px 0; /* Add some spacing */
+    align-items: center; 
+    justify-content: center; 
+    margin: 20px 0; 
   }
   
   .testimonial-card {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center the testimonial card */
-    text-align: center; /* Center the text */
-    width: 100%; /* Ensure full width for responsiveness */
-    max-width: 600px; /* Set max width for the card */
-    padding: 20px; /* Add some padding */
+    align-items: center; 
+    text-align: center; 
+    width: 100%; 
+    max-width: 600px; 
+    padding: 20px; 
   }
   
   .testimonial-arrow {
-    position: absolute; /* Position the arrows absolutely */
-    top: 50%; /* Center vertically */
-    transform: translateY(-50%); /* Adjust for proper centering */
+    position: absolute; 
+    top: 50%; 
+    transform: translateY(-50%); 
   }
   
   .arrow-left {
-    left: -50px; /* Adjust as necessary */
+    left: -50px; 
   }
   
   .arrow-right {
-    right: -50px; /* Adjust as necessary */
+    right: -50px; 
   }

@@ -12,7 +12,7 @@ const RestaurantDetails = () => {
         {
             id: 1,
             title: "Sitara Grand",
-            imageUrl: id1, // Update with actual image URL
+            imageUrl: id1, 
             offer: "20% OFF",
             rating: "4.4 ★",
             price: "₹200 for one",
@@ -21,7 +21,7 @@ const RestaurantDetails = () => {
         {
             id: 2,
             title: "Dominos Pizza",
-            imageUrl: id2, // Update with actual image URL
+            imageUrl: id2, 
             offer: "₹75 OFF",
             rating: "4.2 ★",
             price: "₹150 for one",
@@ -30,7 +30,7 @@ const RestaurantDetails = () => {
         {
             id: 3,
             title: "Ibaco",
-            imageUrl: id3, // Update with actual image URL
+            imageUrl: id3, 
             offer: "₹100 OFF",
             rating: "4.3 ★",
             price: "₹300 for one",
@@ -39,7 +39,7 @@ const RestaurantDetails = () => {
         {
             id: 4,
             title: "Milkshake & More",
-            imageUrl: id4, // Update with actual image URL
+            imageUrl: id4, 
             offer: "30% OFF",
             rating: "4.3 ★",
             price: "₹100 for one",
@@ -48,7 +48,7 @@ const RestaurantDetails = () => {
         {
             id: 5,
             title: "La Panchavati",
-            imageUrl: id5, // Update with actual image URL
+            imageUrl: id5, 
             offer: "30% OFF",
             rating: "4.5 ★",
             price: "₹150 for one",
@@ -57,7 +57,7 @@ const RestaurantDetails = () => {
         {
             id: 6,
             title: "Temptations",
-            imageUrl: id6, // Update with actual image URL
+            imageUrl: id6, 
             offer: "30% OFF",
             rating: "4.1 ★",
             price: "₹250 for one",

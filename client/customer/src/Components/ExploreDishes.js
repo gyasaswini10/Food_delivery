@@ -1,5 +1,5 @@
 import React from 'react';
-import './ExploreDishes.css'; // Link the CSS file for styles
+import './ExploreDishes.css'; 
 import naan from './naan.jpeg';
 import biryani from './biryani.jpg';
 import dosa from './dosa.jpg';

@@ -7,7 +7,6 @@ const Contact = () => {
 
   const onSubmit = (data) => {
     console.log('Message sent', data);
-    // You can add further logic to handle the submitted data, such as sending it to a server
   };
 
   return (
@@ -69,6 +68,7 @@ const Contact = () => {
             error={Boolean(errors.fullName)}
             helperText={errors.fullName?.message}
             style={{ margin: '10px 0' }}
+            color='warning'
           />
           <TextField
             label="Email"
@@ -84,6 +84,7 @@ const Contact = () => {
             error={Boolean(errors.email)}
             helperText={errors.email?.message}
             style={{ margin: '10px 0' }}
+            color='warning'
           />
           <TextField
             label="Type your Message"
@@ -95,6 +96,7 @@ const Contact = () => {
             error={Boolean(errors.message)}
             helperText={errors.message?.message}
             style={{ margin: '10px 0' }}
+            color='warning'
           />
           <Button variant="contained" color="warning" type="submit">
             Send

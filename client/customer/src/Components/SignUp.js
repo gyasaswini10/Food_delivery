@@ -12,7 +12,6 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-// Importing countries and cities from JSON files
 import countriesData from './JsonFiles/Countries.json';
 import citiesData from './JsonFiles/Cities.json';
 
@@ -62,6 +61,7 @@ function SignUp() {
         error={Boolean(errors.fullName)}
         helperText={errors.fullName?.message}
         margin="normal"
+        color='warning'
       />
 
       <TextField
@@ -85,6 +85,7 @@ function SignUp() {
         error={Boolean(errors.phone)}
         helperText={errors.phone?.message}
         margin="normal"
+        color='warning'
       />
 
       <TextField
@@ -101,6 +102,7 @@ function SignUp() {
         error={Boolean(errors.email)}
         helperText={errors.email?.message}
         margin="normal"
+        color='warning'
       />
 
       <Autocomplete
@@ -114,6 +116,7 @@ function SignUp() {
             helperText={errors.country?.message}
             spellCheck={false}
             margin="normal"
+            color='warning'
           />
         )}
       />
@@ -128,6 +131,7 @@ function SignUp() {
             helperText={errors.city?.message}
             spellCheck={false}
             margin="normal"
+            color='warning'
           />
         )}
       />
@@ -141,6 +145,7 @@ function SignUp() {
         error={Boolean(errors.address)}
         helperText={errors.address?.message}
         margin="normal"
+        color='warning'
       />
 
       <TextField
@@ -165,8 +170,10 @@ function SignUp() {
                 {showPassword ? <VisibilityOff /> : <Visibility />}
               </IconButton>
             </InputAdornment>
+            
           ),
         }}
+        color='warning'
       />
 
       <TextField
@@ -189,16 +196,18 @@ function SignUp() {
             </InputAdornment>
           ),
         }}
+        color='warning'
       />
 
       <FormControlLabel
-        control={<Checkbox {...register('terms', { required: 'You must accept the terms and conditions' })} color="primary" />}
+        control={<Checkbox {...register('terms', { required: 'You must accept the terms and conditions' })} color="warning" />}
         label={
           <Typography variant="body2">
-            I accept the <Link href="/terms" sx={{ textDecoration: 'none' }}>Terms and Conditions</Link>
+            I accept the <Link href="/terms" sx={{ textDecoration: 'none' }} >Terms and Conditions</Link>
           </Typography>
         }
         sx={{ mt: 1, textAlign: 'left' }}
+        
       />
       {errors.terms && (
         <Typography color="error" variant="body2">

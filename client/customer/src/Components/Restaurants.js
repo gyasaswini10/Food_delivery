@@ -18,7 +18,7 @@ import {
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import './Restaurant.css'; // Ensure your CSS file is linked
+import './Restaurant.css'; 
 import OneImage from './One.jpg';
 
 // Testimonial data
@@ -72,11 +72,11 @@ const faqs = [
 
 const Restaurant = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [activeForm, setActiveForm] = useState(null); // Manage which form is active
-  const [open, setOpen] = useState(false); // Manage modal open/close state
+  const [activeForm, setActiveForm] = useState(null); 
+  const [open, setOpen] = useState(false); 
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length); // Wrap around to the first
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length); 
   };
 
   const handlePrev = () => {
@@ -120,7 +120,7 @@ const Restaurant = () => {
 
         <Box flex="1" display="flex" justifyContent="flex-end">
           <img
-            src={OneImage} // Use the imported image here
+            src={OneImage}
             alt="Restaurant Image"
             style={{ width: '300px', height: 'auto' }}
           />
@@ -135,22 +135,22 @@ const Restaurant = () => {
         <DialogContent>
           {activeForm === 'register' && (
             <>
-              <TextField label="Restaurant Name" fullWidth margin="normal" />
-              <TextField label="Owner Name" fullWidth margin="normal" />
-              <TextField label="Email" fullWidth margin="normal" />
-              <TextField label="Phone Number" fullWidth margin="normal" />
-              <TextField label="Address" fullWidth margin="normal" />
+              <TextField label="Restaurant Name" fullWidth margin="normal" color='warning'/>
+              <TextField label="Owner Name" fullWidth margin="normal" color='warning'/>
+              <TextField label="Email" fullWidth margin="normal" color='warning'/>
+              <TextField label="Phone Number" fullWidth margin="normal" color='warning'/>
+              <TextField label="Address" fullWidth margin="normal" color='warning'/>
             </>
           )}
           {activeForm === 'login' && (
             <>
-              <TextField label="Email" fullWidth margin="normal" />
-              <TextField label="Password" type="password" fullWidth margin="normal" />
+              <TextField label="Email" fullWidth margin="normal" color='warning'/>
+              <TextField label="Password" type="password" fullWidth margin="normal" color='warning'/>
             </>
           )}
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleClose} color="warning">
             Cancel
           </Button>
           <Button onClick={handleClose} variant="contained" color="warning">

@@ -9,17 +9,16 @@ import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import NotificationsIcon from '@mui/icons-material/Notifications'; // Import the Notifications icon
+import NotificationsIcon from '@mui/icons-material/Notifications'; 
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import Foodhomepage from './Foodhomepage.png'; // Adjust the path to your logo
+import Foodhomepage from './Foodhomepage.png'; 
 import logo from './FinalLogo.jpg';
 
 function ResponsiveAppBar() {
   const location = useLocation();
   const isHomePage = location.pathname === '/home' || location.pathname === '/';
 
-  // Menu state for profile dropdown
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -53,8 +52,7 @@ function ResponsiveAppBar() {
             backgroundPosition: 'top center',
             backgroundRepeat: 'no-repeat',
             zIndex: -1,
-            
-        opacity:0.7
+            opacity:0.8
           }}
         />
       )}
@@ -71,22 +69,22 @@ function ResponsiveAppBar() {
         <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
           {/* Navigation Links */}
           <RouterLink to="/" style={{ textDecoration: 'none', color: 'black', margin: '0 4px' }}>
-            <Button color="inherit" sx={{ fontSize: '12px', padding: '6px 8px', textTransform: 'none' }}>
+            <Button color="inherit" sx={{ fontSize: '14px', padding: '6px 8px', textTransform: 'none' }}>
               Home
             </Button>
           </RouterLink>
           <RouterLink to="/restaurants" style={{ textDecoration: 'none', color: 'black', margin: '0 4px' }}>
-            <Button color="inherit" sx={{ fontSize: '12px', padding: '6px 8px', textTransform: 'none' }}>
+            <Button color="inherit" sx={{ fontSize: '14px', padding: '6px 8px', textTransform: 'none' }}>
               Restaurants
             </Button>
           </RouterLink>
           <RouterLink to="/order" style={{ textDecoration: 'none', color: 'black', margin: '0 4px' }}>
-            <Button color="inherit" sx={{ fontSize: '12px', padding: '6px 8px', textTransform: 'none' }}>
+            <Button color="inherit" sx={{ fontSize: '14px', padding: '6px 8px', textTransform: 'none' }}>
               Order
             </Button>
           </RouterLink>
           <RouterLink to="/reviews" style={{ textDecoration: 'none', color: 'black', margin: '0 4px' }}>
-            <Button color="inherit" sx={{ fontSize: '12px', padding: '6px 8px', textTransform: 'none' }}>
+            <Button color="inherit" sx={{ fontSize: '14px', padding: '6px 8px', textTransform: 'none' }}>
               Reviews
             </Button>
           </RouterLink>
@@ -98,7 +96,7 @@ function ResponsiveAppBar() {
           placeholder="Search..."
           sx={{
             mr: 2,
-            width: '150px', // Set to a fixed width
+            width: '150px', 
             '& .MuiInputBase-input': {
               color: 'black',
             },
@@ -124,7 +122,7 @@ function ResponsiveAppBar() {
 
         {/* Login and Sign Up Buttons */}
         <RouterLink to="/login" style={{ textDecoration: 'none', color: 'black' }}>
-          <Button color="inherit" sx={{ fontSize: '12px', padding: '6px 8px', margin: '0 4px', textTransform: 'none' }}>
+          <Button color="inherit" sx={{ fontSize: '14px', padding: '6px 8px', margin: '0 4px', textTransform: 'none' }}>
             Login
           </Button>
         </RouterLink>
@@ -134,7 +132,7 @@ function ResponsiveAppBar() {
             <Button
               sx={{
                 color: 'black',
-                fontSize: '12px',
+                fontSize: '14px',
                 padding: '6px 8px',
                 textTransform: 'none',
               }}

@@ -13,10 +13,10 @@ const Notifications = () => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'flex-start',
-          width: '100%', // Make it full width
+          width: '100%', 
           boxShadow: 'rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px',
           borderRadius: '8px',
-          marginBottom: 2, // Space between cards if more than one
+          marginBottom: 2, 
         }}
       >
         <CardContent>
@@ -32,10 +32,10 @@ const Notifications = () => {
           {/* Track Order Button */}
           <Button
             component={RouterLink}
-            to="/RealTimeTracking" // Change this to the actual route of your RealTimeTracking component
+            to="/RealTimeTracking" 
             variant="contained"
-            color="warning" // Warning color
-            sx={{ marginTop: 2 }} // Space above the button
+            color="warning" 
+            sx={{ marginTop: 2 }} 
           >
             Track Order
           </Button>

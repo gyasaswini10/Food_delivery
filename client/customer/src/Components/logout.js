@@ -4,7 +4,6 @@ import { Container, Box, Typography, Button, Link } from '@mui/material';
 function Logout() {
   const handleLogout = () => {
     console.log("User logged out");
-    // Logic for clearing session tokens or handling logout functionality can go here
   };
 
   return (

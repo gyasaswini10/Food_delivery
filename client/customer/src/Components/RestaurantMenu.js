@@ -1,9 +1,9 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import restaurantData from './restaurantData'; // Import mock restaurant data
+import restaurantData from './restaurantData'; 
 
 const RestaurantMenu = () => {
-    const { restaurantId } = useParams(); // Get restaurant ID from the URL
+    const { restaurantId } = useParams(); 
     const restaurant = restaurantData.find(item => item.id === parseInt(restaurantId));
 
     if (!restaurant) {

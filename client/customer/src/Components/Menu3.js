@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Typography, Box, Container, Grid, Paper, Tabs, Tab, Rating, Chip,TextField,InputAdornment,Card,CardMedia,CardContent,Button,List,ListItem,ListItemText,Divider,IconButton,Drawer,AppBar,Toolbar,Badge // Import Badge from Material UI
 } from '@mui/material';
 import { AccessTime, Search, Add, Remove, ShoppingCart } from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom'; // Import useHistory for navigation
+import { useNavigate } from 'react-router-dom'; 
 import c1 from './c1.jpg'
 import c2 from './c2.jpg'
 import c3 from './c3.jpg'
@@ -19,7 +19,6 @@ import c13 from './c13.jpg'
 import c14 from './c14.jpg'
 import c15 from './c15.jpg'
 
-// Mock data for the restaurant
 const restaurantData = {
   name: "Ibaco",
   cuisine: "South Indian, Andhra, Beverages, Desserts",
@@ -31,7 +30,6 @@ const restaurantData = {
   deliveryRatingsCount: "52.2K"
 };
 
-// Mock data for menu items
 const categories = [
   {
     name: 'Ice Cream Cakes',
@@ -69,7 +67,7 @@ const RestaurantDetails = () => {
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const [cart, setCart] = useState([]);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate(); 
 
   const handleTabChange = (event, newValue) => {
     setActiveTab(newValue);
@@ -121,19 +119,18 @@ const RestaurantDetails = () => {
   };
 
   const handlePaymentClick = () => {
-    // Navigate to the Payment component or perform payment logic here
-    navigate('/Payment'); // Adjust the path as needed
+    navigate('/Payment'); 
   };
 
   return (
     <Container maxWidth="lg">
-      <AppBar position="static">
+      <AppBar position="static" color='warning'>
         <Toolbar>
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
             {restaurantData.name}
           </Typography>
           <IconButton color="inherit" onClick={toggleDrawer}>
-            <Badge badgeContent={cart.length} color="secondary"> {/* Added Badge to show cart count */}
+            <Badge badgeContent={cart.length} color="warning"> {/* Added Badge to show cart count */}
               <ShoppingCart />
             </Badge>
           </IconButton>
@@ -141,25 +138,25 @@ const RestaurantDetails = () => {
       </AppBar>
 
       <Box my={4}>
-        <Typography variant="subtitle1" color="text.secondary" gutterBottom>
+        <Typography variant="subtitle1" color="text.warning" gutterBottom>
           {restaurantData.cuisine}
         </Typography>
-        <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+        <Typography variant="subtitle2" color="text.warning" gutterBottom>
           {restaurantData.location}
         </Typography>
-        <Typography variant="body2" color="success.main" gutterBottom>
+        <Typography variant="body2" color="warning.main" gutterBottom>
           Open now - {restaurantData.openingHours} <AccessTime fontSize="small" />
         </Typography>
 
         <Grid container spacing={2} mt={2}>
           <Grid item>
-            <Paper elevation={0} sx={{ p: 1, bgcolor: 'success.light', color: 'white' }}>
+            <Paper elevation={0} sx={{ p: 1, bgcolor: 'warning.light', color: 'white' }}>
               <Typography variant="h6">{restaurantData.diningRating}★</Typography>
               <Typography variant="caption">{restaurantData.diningRatingsCount} Dining Ratings</Typography>
             </Paper>
           </Grid>
           <Grid item>
-            <Paper elevation={0} sx={{ p: 1, bgcolor: 'success.light', color: 'white' }}>
+            <Paper elevation={0} sx={{ p: 1, bgcolor: 'warning.light', color: 'white' }}>
               <Typography variant="h6">{restaurantData.deliveryRating}★</Typography>
               <Typography variant="caption">{restaurantData.deliveryRatingsCount} Delivery Ratings</Typography>
             </Paper>
@@ -221,14 +218,14 @@ const RestaurantDetails = () => {
                         />
                         <CardContent>
                           <Typography variant="h6">{item.name}</Typography>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="body2" color="text.warning">
                             {item.description}
                           </Typography>
                           <Typography variant="h5">{item.price}₹</Typography>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="body2" color="text.warning">
                             {item.votes} Votes
                           </Typography>
-                          <Button onClick={() => handleAddToCart(item)} startIcon={<Add />}>Add to Cart</Button>
+                          <Button onClick={() => handleAddToCart(item)} startIcon={<Add />} color='warning'>Add to Cart</Button>
                         </CardContent>
                       </Card>
                     </Grid>
@@ -257,7 +254,7 @@ const RestaurantDetails = () => {
           <Divider />
           <Box sx={{ p: 2 }}>
             <Typography variant="h6">Total: {calculateTotal()}₹</Typography>
-            <Button variant="contained" color="primary" onClick={handlePaymentClick}>Proceed to Payment</Button>
+            <Button variant="contained" color="warning" onClick={handlePaymentClick}>Proceed to Payment</Button>
           </Box>
         </Box>
       </Drawer>

@@ -15,7 +15,6 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    // Add your login logic here using the data object
     console.log('Login successful', data);
   };
 
@@ -48,6 +47,7 @@ const Login = () => {
         error={Boolean(errors.username)}
         helperText={errors.username?.message}
         margin="normal"
+        color='warning'
       />
       <TextField
         fullWidth
@@ -64,9 +64,10 @@ const Login = () => {
         helperText={errors.password?.message}
         margin="normal"
         sx={{ mt: 2 }}
+        color='warning'
       />
       <FormControlLabel
-        control={<Checkbox {...register('rememberMe')} color="primary" />}
+        control={<Checkbox {...register('rememberMe')} color="warning" />}
         label="Remember Me"
         sx={{ mt: 1, textAlign: 'left' }}
       />
@@ -76,11 +77,11 @@ const Login = () => {
 
       <Box sx={{ mt: 2, textAlign: 'center' }}>
         <Link
-          href="#"
+          href="/ForgotPassword"
           variant="body2"
           sx={{
-            textDecoration: 'none', // Remove underline
-            color: 'primary.main', // Add color (optional)
+            textDecoration: 'none', 
+            color: 'primary.main', 
           }}
         >
           Forgot Password?
@@ -90,8 +91,8 @@ const Login = () => {
             href="/SignUp"
             variant="body2"
             sx={{
-              textDecoration: 'none', // Remove underline
-              color: 'primary.main', // Add color (optional)
+              textDecoration: 'none', 
+              color: 'primary.main', 
             }}
           >
             Don't have an account? Sign Up

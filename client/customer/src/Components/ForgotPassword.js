@@ -7,7 +7,6 @@ const ForgotPassword = () => {
 
   const onSubmit = (data) => {
     console.log('Request for password reset sent', data);
-    // Here, you would typically send a request to your backend
   };
 
   return (

@@ -6,15 +6,14 @@ import Restaurants from './Components/Restaurants';
 import Order from './Components/Order'; 
 import Reviews from './Components/Reviews';
 import Login from './Components/Login';
-import Signup from './Components/SignUp'; // Ensure this is the correct case
+import Signup from './Components/SignUp'; 
 import Profile from './Components/Profile';
-import MyOrders from './Components/MyOrder'; // Ensure this matches your file name
-import Logout from './Components/logout'; // Ensure this matches your file name
-import Footer from './Components/Footer'; // Ensure Footer is exported correctly
+import MyOrders from './Components/MyOrder'; 
+import Logout from './Components/logout'; 
+import Footer from './Components/Footer'; 
 import Aboutus from './Components/AboutUs';
 import Privacy from './Components/Privacy';
 import Contact from './Components/Contact';
-//import Payment from './Components/Payment';
 import Terms from './Components/Terms';
 import ForgotPassword from './Components/ForgotPassword';
 import ScrollableCards from './Components/ScrollableCards';
@@ -26,10 +25,7 @@ import Menu4 from './Components/Menu4';
 import Payment from './Components/Payment';
 import Notifications from './Components/Notifications';
 import RealTimeTracking from './Components/RealTimeTracking ';
-//npm install react-leaflet leaflet
-//npm install qrcode
-//npm install react-router-dom @mui/material @emotion/react @emotion/styled
-//npm i @mui/icons-material axios react-hook-form
+
 const App = () => {
   return (
     <Router>
