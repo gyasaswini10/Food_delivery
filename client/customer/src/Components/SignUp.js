@@ -12,21 +12,36 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import countriesData from './JsonFiles/Countries.json';
+import axios from 'axios';
+import countriesData from './JsonFiles/Countries.json'; // Ensure these JSON files exist
 import citiesData from './JsonFiles/Cities.json';
 
-function SignUp() {
+const SignUp = () => {
   const { register, handleSubmit, formState: { errors }, watch, reset } = useForm();
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
-  const onSubmit = (data) => {
-    console.log('Sign up successful', data);
-    reset();
+  const onSubmit = async (data) => {
+    setErrorMessage('');
+    setSuccessMessage('');
+    try {
+      const response = await axios.post('http://localhost:5000/api/users/register', data);
+      setSuccessMessage('Sign-up successful!');
+      reset();
+    } catch (error) {
+      // Check if the error is related to email uniqueness
+      if (error.response?.status === 400 && error.response?.data?.message === 'Email already exists') {
+        setErrorMessage('Email is already in use. Please try with a different email.');
+      } else {
+        setErrorMessage('An error occurred during sign-up. Please try again.');
+      }
+    }
   };
 
-  const handleClickShowPassword = () => setShowPassword(!showPassword);
-  const handleClickShowRepeatPassword = () => setShowRepeatPassword(!showRepeatPassword);
+  const togglePasswordVisibility = () => setShowPassword(!showPassword);
+  const toggleRepeatPasswordVisibility = () => setShowRepeatPassword(!showRepeatPassword);
 
   return (
     <Box
@@ -39,59 +54,44 @@ function SignUp() {
         borderRadius: '8px',
         boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
         backgroundColor: 'white',
-        display: 'flex',
-        flexDirection: 'column',
       }}
     >
-      <Typography variant="h5" component="div" sx={{ mb: 2, textAlign: 'center' }}>
-        Sign Up
-      </Typography>
+      <Typography variant="h5" sx={{ mb: 2, textAlign: 'center' }}>Sign Up</Typography>
+
+      {errorMessage && <Typography color="error" variant="body2" sx={{ textAlign: 'center' }}>{errorMessage}</Typography>}
+      {successMessage && <Typography color="success" variant="body2" sx={{ textAlign: 'center' }}>{successMessage}</Typography>}
 
       <TextField
         fullWidth
         label="Full Name"
-        spellCheck={false}
-        {...register('fullName', {
-          required: 'Full Name is required',
-          pattern: {
-            value: /^[A-Za-z\s]+$/,
-            message: 'Only alphabets are allowed',
-          },
-        })}
+        {...register('fullName', { required: 'Full Name is required' })}
         error={Boolean(errors.fullName)}
         helperText={errors.fullName?.message}
         margin="normal"
-        color='warning'
       />
 
       <TextField
         fullWidth
         label="Phone Number"
         {...register('phone', {
-          required: 'Phone Number is required',
+          required: 'Phone number is required',
           pattern: {
             value: /^[0-9]+$/,
-            message: 'Only numeric values are allowed',
+            message: 'Enter a valid phone number',
           },
           minLength: {
             value: 10,
-            message: 'Phone number must be at least 10 digits',
-          },
-          maxLength: {
-            value: 10,
-            message: 'Phone number must not exceed 10 digits',
+            message: 'Must be at least 10 digits',
           },
         })}
         error={Boolean(errors.phone)}
         helperText={errors.phone?.message}
         margin="normal"
-        color='warning'
       />
 
       <TextField
         fullWidth
         label="Email"
-        type="email"
         {...register('email', {
           required: 'Email is required',
           pattern: {
@@ -102,7 +102,6 @@ function SignUp() {
         error={Boolean(errors.email)}
         helperText={errors.email?.message}
         margin="normal"
-        color='warning'
       />
 
       <Autocomplete
@@ -110,28 +109,21 @@ function SignUp() {
         renderInput={(params) => (
           <TextField
             {...params}
-            label="Country"
             {...register('country', { required: 'Country is required' })}
-            error={Boolean(errors.country)}
-            helperText={errors.country?.message}
-            spellCheck={false}
+            label="Country"
             margin="normal"
-            color='warning'
           />
         )}
       />
-<Autocomplete
+
+      <Autocomplete
         options={citiesData.Cities}
         renderInput={(params) => (
           <TextField
             {...params}
-            label="City"
             {...register('city', { required: 'City is required' })}
-            error={Boolean(errors.city)}
-            helperText={errors.city?.message}
-            spellCheck={false}
+            label="City"
             margin="normal"
-            color='warning'
           />
         )}
       />
@@ -139,41 +131,29 @@ function SignUp() {
       <TextField
         fullWidth
         label="Address"
-        {...register('address', {
-          required: 'Address is required',
-        })}
+        {...register('address', { required: 'Address is required' })}
         error={Boolean(errors.address)}
         helperText={errors.address?.message}
         margin="normal"
-        color='warning'
       />
 
       <TextField
         fullWidth
         label="Password"
         type={showPassword ? 'text' : 'password'}
-        {...register('password', {
-          required: 'Password is required',
-          pattern: {
-            value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/,
-            message:
-              'Password must contain at least 1 lowercase letter, 1 uppercase letter, 1 number, and be at least 8 characters long',
-          },
-        })}
+        {...register('password', { required: 'Password is required' })}
         error={Boolean(errors.password)}
         helperText={errors.password?.message}
         margin="normal"
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
-              <IconButton onClick={handleClickShowPassword}>
+              <IconButton onClick={togglePasswordVisibility}>
                 {showPassword ? <VisibilityOff /> : <Visibility />}
               </IconButton>
             </InputAdornment>
-            
           ),
         }}
-        color='warning'
       />
 
       <TextField
@@ -190,42 +170,29 @@ function SignUp() {
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
-              <IconButton onClick={handleClickShowRepeatPassword}>
+              <IconButton onClick={toggleRepeatPasswordVisibility}>
                 {showRepeatPassword ? <VisibilityOff /> : <Visibility />}
               </IconButton>
             </InputAdornment>
           ),
         }}
-        color='warning'
       />
 
       <FormControlLabel
-        control={<Checkbox {...register('terms', { required: 'You must accept the terms and conditions' })} color="warning" />}
-        label={
-          <Typography variant="body2">
-            I accept the <Link href="/terms" sx={{ textDecoration: 'none' }} >Terms and Conditions</Link>
-          </Typography>
-        }
-        sx={{ mt: 1, textAlign: 'left' }}
-        
+        control={<Checkbox {...register('terms', { required: 'You must accept the terms' })} />}
+        label="I accept the terms and conditions"
       />
-      {errors.terms && (
-        <Typography color="error" variant="body2">
-          {errors.terms.message}
-        </Typography>
-      )}
+      {errors.terms && <Typography color="error">{errors.terms.message}</Typography>}
 
-      <Button type="submit" variant="contained" color="warning" fullWidth sx={{ mt: 2 }}>
+      <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
         Sign Up
       </Button>
 
       <Box sx={{ mt: 2, textAlign: 'center' }}>
-        <Link href="/Login" variant="body2" sx={{ textDecoration: 'none' }}>
-          Already have an account? Login
-        </Link>
+        <Link href="/login" variant="body2">Already have an account? Login</Link>
       </Box>
     </Box>
   );
-}
+};
 
 export default SignUp;

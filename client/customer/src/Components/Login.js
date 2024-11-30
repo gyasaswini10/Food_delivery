@@ -1,21 +1,36 @@
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import axios from 'axios';
 
 const Login = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const [message, setMessage] = useState('');
 
-  const onSubmit = (data) => {
-    console.log('Login successful', data);
+  const onSubmit = async (data) => {
+    setMessage(''); // Reset message
+
+    try {
+      const response = await axios.post('http://localhost:5000/api/users/login', data);
+      const { token, username } = response.data;
+
+      // Save the token
+      localStorage.setItem('token', token);
+      localStorage.setItem('username', username);
+
+      setMessage('Login successful! Redirecting...');
+      console.log('Login successful:', response.data);
+
+      // Redirect to home page or dashboard
+      window.location.href = '/home';
+    } catch (error) {
+      const errorMsg = error.response?.data?.message || 'Unknown error occurred';
+      setMessage(`Login failed: ${errorMsg}`);
+      console.error('Login failed:', error.response?.data || error.message);
+    }
   };
 
   return (
@@ -23,7 +38,7 @@ const Login = () => {
       component="form"
       onSubmit={handleSubmit(onSubmit)}
       sx={{
-        maxWidth: '500px',
+        maxWidth: '400px',
         margin: 'auto',
         padding: '20px',
         borderRadius: '8px',
@@ -31,74 +46,49 @@ const Login = () => {
         backgroundColor: 'white',
       }}
     >
-      <Typography variant="h5" component="div" sx={{ mb: 2 }}>
-        Login Form
-      </Typography>
+      <Typography variant="h5" sx={{ mb: 2, textAlign: 'center' }}>Login</Typography>
+
       <TextField
         fullWidth
-        label="Username"
-        {...register('username', {
-          required: 'Username is required',
-          minLength: {
-            value: 3,
-            message: 'Username must be at least 3 characters',
+        label="Email"
+        type="email"
+        {...register('email', {
+          required: 'Email is required',
+          pattern: {
+            value: /^\S+@\S+\.\S+$/,
+            message: 'Enter a valid email',
           },
         })}
-        error={Boolean(errors.username)}
-        helperText={errors.username?.message}
+        error={Boolean(errors.email)}
+        helperText={errors.email?.message}
         margin="normal"
-        color='warning'
       />
+
       <TextField
         fullWidth
-        type="password"
         label="Password"
+        type="password"
         {...register('password', {
           required: 'Password is required',
-          minLength: {
-            value: 6,
-            message: 'Password must be at least 6 characters',
-          },
         })}
         error={Boolean(errors.password)}
         helperText={errors.password?.message}
         margin="normal"
-        sx={{ mt: 2 }}
-        color='warning'
       />
-      <FormControlLabel
-        control={<Checkbox {...register('rememberMe')} color="warning" />}
-        label="Remember Me"
-        sx={{ mt: 1, textAlign: 'left' }}
-      />
-      <Button type="submit" variant="contained" color="warning" fullWidth sx={{ mt: 2 }}>
+
+      <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
         Login
       </Button>
 
-      <Box sx={{ mt: 2, textAlign: 'center' }}>
-        <Link
-          href="/ForgotPassword"
+      {message && (
+        <Typography
+          color={message.includes('failed') ? 'error' : 'primary'}
           variant="body2"
-          sx={{
-            textDecoration: 'none', 
-            color: 'primary.main', 
-          }}
+          sx={{ mt: 2, textAlign: 'center' }}
         >
-          Forgot Password?
-        </Link>
-        <Box mt={1}>
-          <Link
-            href="/SignUp"
-            variant="body2"
-            sx={{
-              textDecoration: 'none', 
-              color: 'primary.main', 
-            }}
-          >
-            Don't have an account? Sign Up
-          </Link>
-        </Box>
-      </Box>
+          {message}
+        </Typography>
+      )}
     </Box>
   );
 };
