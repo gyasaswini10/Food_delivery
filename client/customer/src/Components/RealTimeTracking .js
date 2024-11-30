@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, Typography, Box, LinearProgress, Button } from '@mui/material';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
@@ -26,37 +26,32 @@ const RealTimeTracking = () => {
   const [statusIndex, setStatusIndex] = useState(0);
   const [status, setStatus] = useState(initialStatuses[0].stage);
   const [progress, setProgress] = useState(0);
-  const [intervalId, setIntervalId] = useState(null);
+  const [mapPosition, setMapPosition] = useState(deliveryLocation);
 
-  const updateStatus = () => {
+  // Function to update status and move the bike icon
+  const updateStatusAndMap = () => {
     if (statusIndex < initialStatuses.length) {
+      // Update the status
       setStatus(initialStatuses[statusIndex].stage);
       setProgress((statusIndex + 1) * (100 / initialStatuses.length));
-
-      const nextStatusTimeout = setTimeout(() => {
-        setStatusIndex((prevIndex) => prevIndex + 1);
-      }, initialStatuses[statusIndex].duration);
-
-      setIntervalId(nextStatusTimeout);
+      
+      // Move the map (bike icon) forward
+      setMapPosition((prevPos) => ({
+        lat: prevPos.lat + 0.0002, // Adjust movement speed
+        lng: prevPos.lng + 0.0003, // Adjust movement speed
+      }));
+      
+      // Move to the next stage
+      setStatusIndex((prevIndex) => prevIndex + 1);
     }
   };
 
-  useEffect(() => {
-    updateStatus();
-
-    return () => {
-      clearTimeout(intervalId);
-    };
-  }, [statusIndex]);
-
+  // Reset everything for a new tracking session
   const handleTrackAgain = () => {
     setStatusIndex(0);
     setStatus(initialStatuses[0].stage);
     setProgress(0);
-
-    clearTimeout(intervalId);
-    
-    updateStatus();
+    setMapPosition(deliveryLocation); // Reset map position to initial location
   };
 
   return (
@@ -79,8 +74,8 @@ const RealTimeTracking = () => {
           <Typography variant="body2" color="text.secondary">
             Your order is currently in the "{status}" stage. Please wait for updates!
           </Typography>
-          <Button variant="contained" color="primary" onClick={handleTrackAgain} sx={{ marginTop: 2 }}>
-            Track Again
+          <Button variant="contained" color="primary" onClick={updateStatusAndMap} sx={{ marginTop: 2 }}>
+            Track Next Step
           </Button>
         </CardContent>
       </Card>
@@ -90,18 +85,23 @@ const RealTimeTracking = () => {
         <Typography variant="h6" component="div" sx={{ marginBottom: 2 }}>
           Delivery Location
         </Typography>
-        <MapContainer center={deliveryLocation} zoom={15} style={{ height: '400px', width: '100%' }}>
+        <MapContainer center={mapPosition} zoom={15} style={{ height: '400px', width: '100%' }}>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
-          <Marker position={deliveryLocation} icon={deliveryIcon}>
+          <Marker position={mapPosition} icon={deliveryIcon}>
             <Popup>
               Your delivery is on its way to KL University, Guntur!
             </Popup>
           </Marker>
         </MapContainer>
       </Box>
+      
+      {/* Reset Button */}
+      <Button variant="outlined" color="secondary" onClick={handleTrackAgain} sx={{ marginTop: 2 }}>
+        Reset Tracking
+      </Button>
     </Box>
   );
 };

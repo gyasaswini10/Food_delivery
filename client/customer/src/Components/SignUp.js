@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -22,14 +23,20 @@ const SignUp = () => {
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const navigate = useNavigate();  // Initialize navigate for redirection
 
   const onSubmit = async (data) => {
     setErrorMessage('');
     setSuccessMessage('');
     try {
       const response = await axios.post('http://localhost:5000/api/users/register', data);
-      setSuccessMessage('Sign-up successful!');
-      reset();
+      setSuccessMessage('Sign-up successful! Redirecting to login...');  // Show success message
+
+      setTimeout(() => {
+        navigate('/login');  // Redirect to login page after 2 seconds
+      }, 2000);  // 2-second delay for the success message to be visible
+
+      reset();  // Reset form fields after successful sign-up
     } catch (error) {
       // Check if the error is related to email uniqueness
       if (error.response?.status === 400 && error.response?.data?.message === 'Email already exists') {

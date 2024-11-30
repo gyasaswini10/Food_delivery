@@ -24,8 +24,9 @@ const Login = () => {
       setMessage('Login successful! Redirecting...');
       console.log('Login successful:', response.data);
 
-      // Redirect to home page or dashboard
-      window.location.href = '/home';
+      setTimeout(() => {
+        window.location.href = '/home';  // Redirect to the home page after delay
+      }, 2000); 
     } catch (error) {
       const errorMsg = error.response?.data?.message || 'Unknown error occurred';
       setMessage(`Login failed: ${errorMsg}`);
