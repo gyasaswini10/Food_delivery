@@ -14,7 +14,7 @@ const Login = () => {
     setMessage(''); // Reset message
 
     try {
-      const response = await axios.post('http://localhost:5000/api/users/login', data);
+      const response = await axios.post('https://project-server1.onrender.com/api/users/login', data);
       const { token, username } = response.data;
 
       // Save the token
