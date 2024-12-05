@@ -27,12 +27,13 @@
     "socket.io-client": "^4.8.0",
     "web-vitals": "^2.1.4"
   },
-  "scripts": {
-    "start": "HOST=0.0.0.0 react-scripts start", 
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
+"scripts": {
+  "start": "DANGEROUSLY_DISABLE_HOST_CHECK=true react-scripts start",
+  "build": "react-scripts build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject"
+}
+,
   "eslintConfig": {
     "extends": [
       "react-app",
