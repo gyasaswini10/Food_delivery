@@ -14,13 +14,8 @@ connectDB(); // Connect to MongoDB
 
 const app = express();
 
-// CORS configuration
 app.use(cors({
-  origin: [
-    'http://localhost:3000', // For local development
-   ' https://food-delivery11.onrender.com',
-    'https://project11-q1dg.onrender.com', // Deployed frontend
-  ],
+  origin: true, // Allow all origins
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 }));
