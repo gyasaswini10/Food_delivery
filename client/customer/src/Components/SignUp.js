@@ -29,7 +29,7 @@ const SignUp = () => {
     setErrorMessage('');
     setSuccessMessage('');
     try {
-      const response = await axios.post('http://localhost:5000/api/users/register', data);
+      const response = await axios.post('https://project-server1.onrender.com/api/users/register', data);
       setSuccessMessage('Sign-up successful! Redirecting to login...');  // Show success message
 
       setTimeout(() => {
