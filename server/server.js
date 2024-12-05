@@ -18,6 +18,7 @@ const app = express();
 app.use(cors({
   origin: [
     'http://localhost:3000', // For local development
+   ' https://food-delivery11.onrender.com',
     'https://project11-q1dg.onrender.com', // Deployed frontend
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
