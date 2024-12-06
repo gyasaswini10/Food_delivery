@@ -93,6 +93,7 @@ function ResponsiveAppBar() {
         <TextField
           variant="outlined"
           size="small"
+          color='warning'
           placeholder="Search..."
           sx={{
             mr: 2,

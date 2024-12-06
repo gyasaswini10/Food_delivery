@@ -71,6 +71,7 @@ const SignUp = () => {
       <TextField
         fullWidth
         label="Full Name"
+        color="warning"
         {...register('fullName', { required: 'Full Name is required' })}
         error={Boolean(errors.fullName)}
         helperText={errors.fullName?.message}
@@ -80,6 +81,7 @@ const SignUp = () => {
       <TextField
         fullWidth
         label="Phone Number"
+        color="warning"
         {...register('phone', {
           required: 'Phone number is required',
           pattern: {
@@ -99,6 +101,7 @@ const SignUp = () => {
       <TextField
         fullWidth
         label="Email"
+        color="warning"
         {...register('email', {
           required: 'Email is required',
           pattern: {
@@ -119,6 +122,7 @@ const SignUp = () => {
             {...register('country', { required: 'Country is required' })}
             label="Country"
             margin="normal"
+            color="warning"
           />
         )}
       />
@@ -131,6 +135,7 @@ const SignUp = () => {
             {...register('city', { required: 'City is required' })}
             label="City"
             margin="normal"
+            color="warning"
           />
         )}
       />
@@ -138,6 +143,7 @@ const SignUp = () => {
       <TextField
         fullWidth
         label="Address"
+        color="warning"
         {...register('address', { required: 'Address is required' })}
         error={Boolean(errors.address)}
         helperText={errors.address?.message}
@@ -147,6 +153,7 @@ const SignUp = () => {
       <TextField
         fullWidth
         label="Password"
+        color="warning"
         type={showPassword ? 'text' : 'password'}
         {...register('password', { required: 'Password is required' })}
         error={Boolean(errors.password)}
@@ -166,6 +173,7 @@ const SignUp = () => {
       <TextField
         fullWidth
         label="Repeat Password"
+        color="warning"
         type={showRepeatPassword ? 'text' : 'password'}
         {...register('passwordRepeat', {
           required: 'Repeat Password is required',
@@ -186,17 +194,18 @@ const SignUp = () => {
       />
 
       <FormControlLabel
-        control={<Checkbox {...register('terms', { required: 'You must accept the terms' })} />}
+        control={<Checkbox color="warning"{...register('terms', { required: 'You must accept the terms' })} />}
         label="I accept the terms and conditions"
+        
       />
       {errors.terms && <Typography color="error">{errors.terms.message}</Typography>}
 
-      <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
+      <Button type="submit" variant="contained" color="warning" fullWidth sx={{ mt: 2 }}>
         Sign Up
       </Button>
 
       <Box sx={{ mt: 2, textAlign: 'center' }}>
-        <Link href="/login" variant="body2">Already have an account? Login</Link>
+        <Link href="/login" variant="body2" color="warning">Already have an account? Login</Link>
       </Box>
     </Box>
   );

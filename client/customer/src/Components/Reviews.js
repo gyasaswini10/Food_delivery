@@ -1,13 +1,18 @@
+// Reviews.js
 import React, { useState } from 'react';
 import { Box, TextField, Button, Typography, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from '@mui/material';
+import axios from 'axios';  // Import axios for HTTP requests
 
 const Reviews = () => {
   const [reviewData, setReviewData] = useState({
     name: '',
-    dishName: '',  
+    dishName: '',
     rating: '',
     review: ''
   });
+
+  const [message, setMessage] = useState('');  // To display success or error message
+  const [messageType, setMessageType] = useState('');  // To differentiate success/error message styles
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,16 +22,29 @@ const Reviews = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Review Submitted:', reviewData);
-    alert('Thank you for your review!');
-    setReviewData({
-      name: '',
-      dishName: '', 
-      rating: '',
-      review: ''
-    });
+
+    try {
+      const response = await axios.post('http://localhost:6000/api/reviews', reviewData);
+      
+      // Display success message
+      setMessage(response.data.message);
+      setMessageType('success');
+
+      // Clear form fields after submission
+      setReviewData({
+        name: '',
+        dishName: '',
+        rating: '',
+        review: ''
+      });
+    } catch (error) {
+      // Handle error and display message
+      console.error(error);
+      setMessage('Failed to submit review. Please try again.');
+      setMessageType('error');
+    }
   };
 
   return (
@@ -61,7 +79,7 @@ const Reviews = () => {
 
       <TextField
         fullWidth
-        label="Dish Name"  
+        label="Dish Name"
         name="dishName"
         value={reviewData.dishName}
         onChange={handleChange}
@@ -78,11 +96,11 @@ const Reviews = () => {
           onChange={handleChange}
           row
         >
-          <FormControlLabel value="1" control={<Radio color='warning'/>} label="1 Star" />
-          <FormControlLabel value="2" control={<Radio color='warning'/>} label="2 Stars" />
-          <FormControlLabel value="3" control={<Radio color='warning'/>} label="3 Stars" />
-          <FormControlLabel value="4" control={<Radio color='warning'/>} label="4 Stars" />
-          <FormControlLabel value="5" control={<Radio color='warning'/>} label="5 Stars" />
+          <FormControlLabel value="1" control={<Radio color='warning' />} label="1 Star" />
+          <FormControlLabel value="2" control={<Radio color='warning' />} label="2 Stars" />
+          <FormControlLabel value="3" control={<Radio color='warning' />} label="3 Stars" />
+          <FormControlLabel value="4" control={<Radio color='warning' />} label="4 Stars" />
+          <FormControlLabel value="5" control={<Radio color='warning' />} label="5 Stars" />
         </RadioGroup>
       </FormControl>
 
@@ -102,6 +120,13 @@ const Reviews = () => {
       <Button type="submit" variant="contained" color="warning" fullWidth sx={{ mt: 2 }}>
         Submit Review
       </Button>
+
+      {/* Display message based on submission result */}
+      {message && (
+        <Typography sx={{ mt: 2, color: messageType === 'success' ? 'green' : 'red', textAlign: 'center' }}>
+          {message}
+        </Typography>
+      )}
     </Box>
   );
 };

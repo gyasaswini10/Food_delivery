@@ -1,7 +1,7 @@
 {
   "name": "customer",
   "version": "0.1.0",
-  "proxy":"https://project-server1.onrender.com",
+  "proxy":"http://localhost:5000",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.13.3",

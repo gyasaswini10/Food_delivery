@@ -52,6 +52,7 @@ const Login = () => {
       <TextField
         fullWidth
         label="Email"
+        color='warning'
         type="email"
         {...register('email', {
           required: 'Email is required',
@@ -68,6 +69,7 @@ const Login = () => {
       <TextField
         fullWidth
         label="Password"
+        color='warning'
         type="password"
         {...register('password', {
           required: 'Password is required',
@@ -77,7 +79,7 @@ const Login = () => {
         margin="normal"
       />
 
-      <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
+      <Button type="submit" variant="contained" color="warning" fullWidth sx={{ mt: 2 }}>
         Login
       </Button>
 

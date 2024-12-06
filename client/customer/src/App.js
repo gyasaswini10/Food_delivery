@@ -25,6 +25,7 @@ import Menu4 from './Components/Menu4';
 import Payment from './Components/Payment';
 import Notifications from './Components/Notifications';
 import RealTimeTracking from './Components/RealTimeTracking ';
+import RestaurantManagement from './Components/RestaurantManagement';
 
 const App = () => {
   return (
@@ -55,6 +56,7 @@ const App = () => {
            <Route path="/Payment" element={<Payment />} />
            <Route path='/notifications' element={<Notifications/>}/>
            <Route path='/RealTimeTracking' element={<RealTimeTracking/>}/>
+           <Route path='/RestaurantManagement' element={<RestaurantManagement/>}/>
           </Routes>
         </div>
 <Footer/>

@@ -197,6 +197,7 @@ const RestaurantDetails = () => {
                   fullWidth
                   variant="outlined"
                   placeholder="Search within menu"
+                  color="warning"
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
