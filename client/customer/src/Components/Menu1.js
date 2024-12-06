@@ -271,6 +271,7 @@ const RestaurantDetails = () => {
                 <TextField
                   fullWidth
                   variant="outlined"
+                  color="warning"
                   placeholder="Search within menu"
                   InputProps={{
                     startAdornment: (

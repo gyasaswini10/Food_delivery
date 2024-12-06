@@ -20,6 +20,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import './Restaurant.css'; 
 import OneImage from './One.jpg';
+import { useNavigate } from 'react-router-dom';
 
 // Testimonial data
 const testimonials = [
@@ -74,6 +75,7 @@ const Restaurant = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeForm, setActiveForm] = useState(null); 
   const [open, setOpen] = useState(false); 
+  const navigate = useNavigate(); // Hook to navigate between pages
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length); 
@@ -95,6 +97,12 @@ const Restaurant = () => {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleFormSubmit = () => {
+    // Navigate to Restaurant Management page after successful login/registration
+    navigate('/RestaurantManagement');
+    setOpen(false);  // Close the dialog
   };
 
   return (
@@ -153,7 +161,7 @@ const Restaurant = () => {
           <Button onClick={handleClose} color="warning">
             Cancel
           </Button>
-          <Button onClick={handleClose} variant="contained" color="warning">
+          <Button onClick={handleFormSubmit} variant="contained" color="warning">
             {activeForm === 'register' ? 'Submit' : 'Login'}
           </Button>
         </DialogActions>
