@@ -50,7 +50,7 @@ const AboutUs = () => {
           <Card variant="outlined" style={{ height: '100%', boxShadow: '0 3px 10px rgba(0,0,0,0.1)', borderRadius: '8px' }}>
             <CardContent>
               <h6>J. Jyothi Keerthana</h6>
-              <Link href="https://www.linkedin.com/in/keerthi-javvaji-71258527a/" target="_blank" style={{ marginRight: '10px' }}>
+              <Link href="https://www.linkedin.com/in/jyothi-keerthana-javvaji-71258527a" target="_blank" style={{ marginRight: '10px' }}>
                 <LinkedInIcon sx={{ color: 'warning.main' }} />
               </Link>
               <Link href="https://github.com/Keerthana-Javvaji" target="_blank">
