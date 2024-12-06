@@ -1,30 +1,39 @@
-// server.js
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
+const reviewRoutes = require('./routes/reviewRoutes'); // Import review routes
 
-dotenv.config(); // Initialize dotenv configuration
+dotenv.config(); // Load environment variables
 
-const PORT = process.env.PORT || 6000;
+const PORT = process.env.PORT || 5000;
 
-// Attempt to connect to the database
-connectDB(); // Connect to MongoDB
+// Connect to MongoDB
+connectDB();
 
 const app = express();
 
+// CORS configuration
 app.use(cors({
-  origin: true, // Allow all origins
+  origin: true, // Allows all origins
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true,
+  credentials: true, // Include credentials in cross-origin requests
 }));
 
-// Middleware to parse incoming JSON requests
+// Middleware for parsing JSON requests
 app.use(express.json());
 
-// API routes
+// User-related routes
 app.use('/api/users', userRoutes);
+
+// Review-related routes
+app.use('/api/reviews', reviewRoutes);
+
+// Health Check Endpoint
+app.get('/', (req, res) => {
+  res.send('API is running...');
+});
 
 // Start the server
 app.listen(PORT, '0.0.0.0', () => {

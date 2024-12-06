@@ -91,7 +91,7 @@ const Login = () => {
         label="Email"
         color='warning'
         type="email"
-        color='warning'
+       
         {...register('email', {
           required: 'Email is required',
           pattern: {
@@ -102,6 +102,7 @@ const Login = () => {
         error={Boolean(errors.email)}
         helperText={errors.email?.message}
         margin="normal"
+        
       />
 
       <TextField
