@@ -79,6 +79,7 @@ const Login = () => {
       <TextField
         fullWidth
         label="Email"
+        color='warning'
         type="email"
         color='warning'
         {...register('email', {
