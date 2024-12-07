@@ -22,7 +22,6 @@ import './Restaurant.css';
 import OneImage from './One.jpg';
 import { useNavigate } from 'react-router-dom';
 
-// Testimonial data
 const testimonials = [
   {
     name: 'Tushar',
@@ -73,12 +72,12 @@ const faqs = [
 
 const Restaurant = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [activeForm, setActiveForm] = useState(null); 
-  const [open, setOpen] = useState(false); 
+  const [activeForm, setActiveForm] = useState(''); // 'register' or 'login'
+  const [open, setOpen] = useState(false);
   const navigate = useNavigate(); // Hook to navigate between pages
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length); 
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
   };
 
   const handlePrev = () => {
@@ -99,11 +98,46 @@ const Restaurant = () => {
     setOpen(false);
   };
 
-  const handleFormSubmit = () => {
-    // Navigate to Restaurant Management page after successful login/registration
-    navigate('/RestaurantManagement');
-    setOpen(false);  // Close the dialog
+  const handleFormSubmit = async () => {
+    const data = activeForm === 'register' ? {
+      restaurantName: document.querySelector('[name="restaurantName"]').value,
+      ownerName: document.querySelector('[name="ownerName"]').value,
+      email: document.querySelector('[name="email"]').value,
+      phoneNumber: document.querySelector('[name="phoneNumber"]').value,
+      address: document.querySelector('[name="address"]').value,
+      password: document.querySelector('[name="password"]').value,
+    } : {
+      email: document.querySelector('[name="email"]').value,
+      password: document.querySelector('[name="password"]').value,
+    };
+
+    const endpoint = activeForm === 'register' ? '/register' : '/login';
+
+    try {
+      const response = await fetch(`http://localhost:5000/api${endpoint}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        // Display the success message and redirect to RestaurantManagement
+        alert(result.message || 'Login successful! Redirecting...');
+        navigate('/RestaurantManagement', { state: { message: 'Welcome!' } }); // Pass a welcome message
+      } else {
+        alert(result.error || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An unexpected error occurred. Please try again.');
+    }
+
+    setOpen(false); // Close the dialog
   };
+  
+
+  
 
   return (
     <Box>
@@ -143,17 +177,18 @@ const Restaurant = () => {
         <DialogContent>
           {activeForm === 'register' && (
             <>
-              <TextField label="Restaurant Name" fullWidth margin="normal" color='warning'/>
-              <TextField label="Owner Name" fullWidth margin="normal" color='warning'/>
-              <TextField label="Email" fullWidth margin="normal" color='warning'/>
-              <TextField label="Phone Number" fullWidth margin="normal" color='warning'/>
-              <TextField label="Address" fullWidth margin="normal" color='warning'/>
+              <TextField name="restaurantName" label="Restaurant Name" fullWidth margin="normal" color='warning'/>
+              <TextField name="ownerName" label="Owner Name" fullWidth margin="normal" color='warning'/>
+              <TextField name="email" label="Email" fullWidth margin="normal" color='warning'/>
+              <TextField name="phoneNumber" label="Phone Number" fullWidth margin="normal" color='warning'/>
+              <TextField name="address" label="Address" fullWidth margin="normal" color='warning'/>
+              <TextField name="password" label="Password" type="password" fullWidth margin="normal" color='warning'/>
             </>
           )}
           {activeForm === 'login' && (
             <>
-              <TextField label="Email" fullWidth margin="normal" color='warning'/>
-              <TextField label="Password" type="password" fullWidth margin="normal" color='warning'/>
+              <TextField name="email" label="Email" fullWidth margin="normal" color='warning'/>
+              <TextField name="password" label="Password" type="password" fullWidth margin="normal" color='warning'/>
             </>
           )}
         </DialogContent>
