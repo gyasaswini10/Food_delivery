@@ -3,10 +3,9 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
-const reviewRoutes = require('./routes/reviewRoutes'); // Import review routes
+const reviewRoutes = require('./routes/reviewRoutes');
 const restaurantRoutes = require('./routes/restaurantRoutes');
 const managerRoutes = require('./routes/managerRoutes');
- // Import restaurant routes
 
 dotenv.config(); // Load environment variables
 
@@ -33,7 +32,10 @@ app.use('/api/users', userRoutes);
 // Review-related routes
 app.use('/api/reviews', reviewRoutes);
 
-app.use('/api', restaurantRoutes);
+// Restaurant-related routes
+app.use('/api/restaurants', restaurantRoutes);
+
+// Manager authentication routes
 app.use('/auth', managerRoutes);
 
 // Health Check Endpoint

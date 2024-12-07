@@ -1,36 +1,35 @@
-// controllers/restaurantController.js
-const Restaurant = require('../models/Restaurant');
-const User = require('../models/User');
+const RestaurantManager = require('../models/RestaurantManager');
+const jwt = require('jsonwebtoken');
 
-const registerRestaurant = async (req, res) => {
+const loginRestaurantManager = async (req, res) => {
+  const { email, password } = req.body;
+
   try {
-    const { restaurantName, ownerName, email, phoneNumber, address, userId } = req.body;
+    const manager = await RestaurantManager.findOne({ email });
 
-    // Check if the user exists and is a restaurant manager
-    const user = await User.findById(userId);
-    if (!user || user.role !== 'restaurant_manager') {
-      return res.status(400).json({ message: 'User is not a valid restaurant manager' });
+    if (!manager) {
+      return res.status(404).json({ message: 'Manager not found.' });
     }
 
-    // Create the restaurant
-    const newRestaurant = new Restaurant({
-      restaurantName,
-      ownerName,
-      email,
-      phoneNumber,
-      address,
-      manager: userId  // Link restaurant to the user (restaurant manager)
+    const isMatch = await manager.matchPassword(password);
+
+    if (!isMatch) {
+      return res.status(401).json({ message: 'Invalid email or password.' });
+    }
+
+    const token = jwt.sign({ id: manager._id }, process.env.JWT_SECRET, {
+      expiresIn: '1d',
     });
 
-    // Save the restaurant to the database
-    await newRestaurant.save();
-    res.status(201).json({ message: 'Restaurant registered successfully', restaurant: newRestaurant });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Server error' });
+    res.status(200).json({
+      id: manager._id,
+      name: manager.ownerName,
+      email: manager.email,
+      token,
+    });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error.', error });
   }
 };
 
-module.exports = {
-  registerRestaurant
-};
+module.exports = { loginRestaurantManager };
