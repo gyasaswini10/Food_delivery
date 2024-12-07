@@ -1,12 +1,36 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 import { Card, CardContent, Typography, TextField, Button, Grid } from '@mui/material';
 import { useForm } from 'react-hook-form';
+import emailjs from 'emailjs-com';
 
 const Contact = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
+  const [messageSent, setMessageSent] = useState(null); // State to handle success message
 
   const onSubmit = (data) => {
-    console.log('Message sent', data);
+    const emailParams = {
+      from_name: data.fullName,
+      reply_to: data.email,
+      message: data.message,
+    };
+
+    emailjs
+      .send(
+        'service_7h8xldq', // Replace with your EmailJS Service ID
+        'template_0y1n5lv', // Replace with your EmailJS Template ID
+        emailParams,
+        'uatl4u2BqUitxqXus' // Replace with your EmailJS Public Key
+      )
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+        setMessageSent('Your message has been sent successfully!'); // Set success message
+        reset(); // Clear the form after successful submission
+      })
+      .catch((err) => {
+        console.error('FAILED...', err);
+        setMessageSent('Failed to send the message. Please try again later.'); // Set error message
+      });
   };
 
   return (
@@ -68,7 +92,7 @@ const Contact = () => {
             error={Boolean(errors.fullName)}
             helperText={errors.fullName?.message}
             style={{ margin: '10px 0' }}
-            color='warning'
+            color="warning"
           />
           <TextField
             label="Email"
@@ -84,7 +108,7 @@ const Contact = () => {
             error={Boolean(errors.email)}
             helperText={errors.email?.message}
             style={{ margin: '10px 0' }}
-            color='warning'
+            color="warning"
           />
           <TextField
             label="Type your Message"
@@ -96,12 +120,19 @@ const Contact = () => {
             error={Boolean(errors.message)}
             helperText={errors.message?.message}
             style={{ margin: '10px 0' }}
-            color='warning'
+            color="warning"
           />
           <Button variant="contained" color="warning" type="submit">
             Send
           </Button>
         </form>
+
+        {/* Success or error message display */}
+        {messageSent && (
+          <Typography variant="body1" align="center" style={{ marginTop: '20px', color: messageSent.includes('successfully') ? 'green' : 'red' }}>
+            {messageSent}
+          </Typography>
+        )}
       </div>
     </div>
   );

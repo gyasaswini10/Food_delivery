@@ -1,8 +1,9 @@
-// routes/userRoutes.js
 const express = require('express');
 const router = express.Router();
 const authenticateJWT = require('../middleware/authenticateJWT');
-const { register1, login1, Currentuser, updateUser, deleteUser } = require('../controllers/userController');
+
+// Import all the necessary controller functions
+const { register1, login1, Currentuser, updateUser, deleteUser, getProfile } = require('../controllers/userController');
 
 // Register route
 router.post('/register', register1);
@@ -15,6 +16,9 @@ router.get('/me', authenticateJWT, Currentuser);
 
 // Update user info (protected route)
 router.put('/me', authenticateJWT, updateUser);
+
+// Fetch profile details (protected route)
+router.get('/profile', authenticateJWT, getProfile);
 
 // Delete user (protected route)
 router.delete('/me', authenticateJWT, deleteUser);

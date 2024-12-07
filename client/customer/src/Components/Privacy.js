@@ -10,7 +10,9 @@ function Privacy() {
           Privacy Policy
         </Typography>
         <Typography variant="body1" paragraph>
-          We at [Your Platform Name] value your privacy and are committed to protecting your personal data. 
+
+          We Delight Zone value your privacy and are committed to protecting your personal data. 
+
           This Privacy Policy explains how we collect, use, and safeguard your information when you use our food delivery platform.
         </Typography>
 

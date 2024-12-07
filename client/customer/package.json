@@ -1,9 +1,10 @@
 {
   "name": "customer",
   "version": "0.1.0",
-  "proxy": "https://project-server1.onrender.com",
+  "proxy": "http://localhost:5000",
   "private": true,
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^6.1.1",
@@ -13,6 +14,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.9",
+    "emailjs-com": "^3.2.0",
     "js-cookie": "^3.0.5",
     "leaflet": "^1.9.4",
     "prop-types": "^15.8.1",
@@ -25,6 +27,7 @@
     "react-qr-code": "^2.0.15",
     "react-router-dom": "^6.26.2",
     "react-scripts": "5.0.1",
+    "react-toastify": "^10.0.6",
     "socket.io-client": "^4.8.0",
     "web-vitals": "^2.1.4"
   },
@@ -51,5 +54,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^14.5.2",
+    "jest": "^27.5.1"
   }
 }
