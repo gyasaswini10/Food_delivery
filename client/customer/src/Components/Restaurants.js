@@ -105,7 +105,7 @@ const Restaurant = () => {
       email: document.querySelector('[name="email"]').value,
       phoneNumber: document.querySelector('[name="phoneNumber"]').value,
       address: document.querySelector('[name="address"]').value,
-      
+      password: document.querySelector('[name="password"]').value,
     } : {
       email: document.querySelector('[name="email"]').value,
       password: document.querySelector('[name="password"]').value,
@@ -122,13 +122,15 @@ const Restaurant = () => {
 
       const result = await response.json();
       if (response.ok) {
-        alert(result.message);
-        navigate('/RestaurantManagement'); // Redirect after successful registration
+        // Display the success message and redirect to RestaurantManagement
+        alert(result.message || 'Login successful! Redirecting...');
+        navigate('/RestaurantManagement', { state: { message: 'Welcome!' } }); // Pass a welcome message
       } else {
-        alert(result.error);
+        alert(result.error || 'Something went wrong. Please try again.');
       }
     } catch (error) {
       console.error('Error:', error);
+      alert('An unexpected error occurred. Please try again.');
     }
 
     setOpen(false); // Close the dialog
@@ -180,6 +182,7 @@ const Restaurant = () => {
               <TextField name="email" label="Email" fullWidth margin="normal" color='warning'/>
               <TextField name="phoneNumber" label="Phone Number" fullWidth margin="normal" color='warning'/>
               <TextField name="address" label="Address" fullWidth margin="normal" color='warning'/>
+              <TextField name="password" label="Password" type="password" fullWidth margin="normal" color='warning'/>
             </>
           )}
           {activeForm === 'login' && (
