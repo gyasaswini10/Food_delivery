@@ -42,7 +42,7 @@ const Footer = () => {
           </Grid>
         </Grid>
         <Typography variant="body2" align="center" style={{ marginTop: '20px' }}>
-          © {new Date().getFullYear()} Delight Zone. All rights reserved.
+          © {new Date().getFullYear()} Delight Zone. All rights reserved by our team.
         </Typography>
       </Container>
     </footer>

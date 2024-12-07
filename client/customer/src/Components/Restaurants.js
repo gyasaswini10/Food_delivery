@@ -115,7 +115,7 @@ const Restaurant = () => {
     const endpoint = activeForm === 'register' ? '/register' : '/login';
   
     try {
-      const response = await fetch(`http://localhost:5000${endpoint}`, {
+      const response = await fetch(`https://project-server1.onrender.com${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data), // Send the correct data payload
