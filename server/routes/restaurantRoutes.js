@@ -4,7 +4,7 @@ const router = express.Router();
 
 // POST route to handle registration
 router.post('/register', async (req, res) => {
-  const { restaurantName, ownerName, email, phoneNumber, address } = req.body;
+  const { restaurantName, ownerName, email, phoneNumber, address, password } = req.body;
 
   try {
     const newManager = new RestaurantManager({
@@ -13,7 +13,8 @@ router.post('/register', async (req, res) => {
       email,
       phoneNumber,
       address,
-    })
+      password, // Password is now included
+    });
 
     await newManager.save();
     res.status(201).send({ message: 'Restaurant Manager registered successfully!' });
