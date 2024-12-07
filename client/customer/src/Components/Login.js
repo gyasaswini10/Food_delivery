@@ -39,20 +39,11 @@ const Login = () => {
 
     try {
       const response = await axios.post('https://project-server1.onrender.com/api/users/login', data);
-      const { token, username, email, phone, city, country, address } = response.data;
+      const { token, username } = response.data;
 
-      // Save the token and user details
+      // Save the token
       localStorage.setItem('token', token);
-      localStorage.setItem('userDetails', JSON.stringify({
-        username,
-        email,
-        phone,
-        city,
-        country,
-        address,
-      }));
-
-      console.log('Saved userDetails:', JSON.parse(localStorage.getItem('userDetails')));
+      localStorage.setItem('username', username);
 
       // Send login notification email
       sendEmailNotification(data.email);
@@ -60,9 +51,8 @@ const Login = () => {
       setMessage('Login successful! Redirecting...');
       console.log('Login successful:', response.data);
 
-      // Redirect to the profile page after a short delay
       setTimeout(() => {
-        window.location.href = '/profile'; // Redirect to Profile
+        window.location.href = '/home'; // Redirect to the home page after delay
       }, 2000);
     } catch (error) {
       const errorMsg = error.response?.data?.message || 'Unknown error occurred';
@@ -91,7 +81,6 @@ const Login = () => {
         label="Email"
         color='warning'
         type="email"
-       
         {...register('email', {
           required: 'Email is required',
           pattern: {
@@ -102,7 +91,6 @@ const Login = () => {
         error={Boolean(errors.email)}
         helperText={errors.email?.message}
         margin="normal"
-        
       />
 
       <TextField

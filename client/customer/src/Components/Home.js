@@ -1,17 +1,25 @@
-import React from 'react';
+import Cookies from 'js-cookie';
+import React, { useEffect } from 'react';
 import ScrollableCards from './ScrollableCards';
 import CardGrid from './CardGrid';
 import CardRow from './CardRow';
 import Footer from './Footer';
-import food4 from './food4.png';
+
+
 const Home = () => {
+  useEffect(() => {
+    // Set a cookie when the Home component loads
+    Cookies.set('visitedHomePage', 'true', { expires: 7, secure: true, sameSite: 'Strict' });
+    console.log('Cookie set: visitedHomePage');
+  }, []);
+
   return (
     <div style={{ position: 'relative', minHeight: '100vh', width: '100%' }}>
       
       {/* Background Image Container */}
       <div style={{
         height: '80vh',
-        backgroundImage: `url(./food4.png)`, 
+        
         backgroundSize: 'cover',
         backgroundPosition: 'top center',
         backgroundRepeat: 'no-repeat',
@@ -24,7 +32,6 @@ const Home = () => {
        {/* Background Image Container */}
        <div style={{
         height: '80vh',
-        backgroundImage: `url(./food4.png)`, 
         backgroundSize: 'cover',
         backgroundPosition: 'top center',
         backgroundRepeat: 'no-repeat',
