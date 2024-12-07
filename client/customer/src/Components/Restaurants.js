@@ -278,12 +278,12 @@ const Restaurant = () => {
         </div>
     
     </div>{/* Testimonials Section */}
-<div className="testimonial-container">
-  <IconButton className="testimonial-arrow arrow-left" onClick={handlePrev}>
+<div className="testimonial-container" >
+  <IconButton className="testimonial-arrow arrow-left" onClick={handlePrev} >
     <ArrowBackIosIcon />
   </IconButton>
 
-  <Card className="testimonial-card" variant="outlined">
+  <Card className="testimonial-card" variant="outlined" >
     <CardContent>
       <Typography variant="h6" component="div">
         {testimonials[currentIndex].feedback}
