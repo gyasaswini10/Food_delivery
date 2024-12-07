@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const restaurantManagerSchema = new mongoose.Schema({
   restaurantName: String,
   ownerName: String,
-  email: { type: String, unique: true },
+  email: { type: String},
   phoneNumber: String,
   address: String,
 });
