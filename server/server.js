@@ -5,6 +5,7 @@ const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
 const reviewRoutes = require('./routes/reviewRoutes'); // Import review routes
 const restaurantRoutes = require('./routes/restaurantRoutes');
+const managerRoutes = require('./routes/managerRoutes');
  // Import restaurant routes
 
 dotenv.config(); // Load environment variables
@@ -33,6 +34,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/reviews', reviewRoutes);
 
 app.use('/api', restaurantRoutes);
+app.use('/auth', managerRoutes);
 
 // Health Check Endpoint
 app.get('/', (req, res) => {
