@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import TextField from '@mui/material/TextField';
@@ -7,6 +6,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import emailjs from '@emailjs/browser';
+import Cookies from 'js-cookie'; // Import js-cookie
 
 const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -42,18 +42,11 @@ const Login = () => {
       const response = await axios.post('https://project-server1.onrender.com/api/users/login', data);
       const { token, username, email, phone, city, country, address } = response.data;
 
-      // Save the token and user details
-      localStorage.setItem('token', token);
-      localStorage.setItem('userDetails', JSON.stringify({
-        username,
-        email,
-        phone,
-        city,
-        country,
-        address,
-      }));
+      // Save the token as a cookie and set expiration if needed (e.g., 7 days)
+      Cookies.set('token', token, { expires: 7 }); // Cookie expires in 7 days
+      Cookies.set('userDetails', JSON.stringify({ username, email, phone, city, country, address }), { expires: 7 });
 
-      console.log('Saved userDetails:', JSON.parse(localStorage.getItem('userDetails')));
+      console.log('Saved userDetails:', JSON.parse(Cookies.get('userDetails')));
 
       // Send login notification email
       sendEmailNotification(data.email);
@@ -92,7 +85,6 @@ const Login = () => {
         label="Email"
         color='warning'
         type="email"
-       
         {...register('email', {
           required: 'Email is required',
           pattern: {
@@ -103,7 +95,6 @@ const Login = () => {
         error={Boolean(errors.email)}
         helperText={errors.email?.message}
         margin="normal"
-        
       />
 
       <TextField

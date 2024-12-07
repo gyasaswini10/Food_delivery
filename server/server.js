@@ -1,12 +1,12 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const cookieParser = require('cookie-parser');  // Import cookie-parser
 const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
 const reviewRoutes = require('./routes/reviewRoutes'); // Import review routes
 const restaurantRoutes = require('./routes/restaurantRoutes');
-const managerRoutes = require('./routes/managerRoutes');
- // Import restaurant routes
+const managerRoutes = require('./routes/managerRoutes'); // Import restaurant routes
 
 dotenv.config(); // Load environment variables
 
@@ -26,6 +26,9 @@ app.use(cors({
 
 // Middleware for parsing JSON requests
 app.use(express.json());
+
+// Middleware to parse cookies
+app.use(cookieParser());  // Add cookie parser middleware
 
 // User-related routes
 app.use('/api/users', userRoutes);
