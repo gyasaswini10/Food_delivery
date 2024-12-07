@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const cookieParser = require('cookie-parser');  // Import cookie-parser
 const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
 const reviewRoutes = require('./routes/reviewRoutes'); // Import review routes

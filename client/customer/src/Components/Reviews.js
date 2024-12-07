@@ -23,7 +23,7 @@ const Reviews = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/api/reviews/submit', reviewData);
+      const response = await axios.post('https://project-server1.onrender.com/api/reviews/submit', reviewData);
       if (response.status === 201) {
         setMessage('Review successfully submitted!');
       }
