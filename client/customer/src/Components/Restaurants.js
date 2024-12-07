@@ -92,6 +92,7 @@ const Restaurant = () => {
   const handleLoginClick = () => {
     setActiveForm('login');
     setOpen(true);
+    
   };
 
   const handleClose = () => {
@@ -120,27 +121,28 @@ const Restaurant = () => {
         body: JSON.stringify(data), // Send the correct data payload
       });
   
-      // Parse the JSON response
       const result = await response.json();
   
       // Check if the response status is OK
       if (response.ok) {
-        // Display the success message and redirect to RestaurantManagement
-        alert(result.message || 'Login successful! Redirecting...');
-        navigate('/RestaurantManagement', { state: { message: 'Welcome!' } }); // Pass a welcome message
+        alert(result.message);  // Alert on success
+        if (activeForm === 'register') {
+          // Redirect to Restaurant Management after registration
+          navigate('/RestaurantManagement');
+        } else {
+          // Redirect after login
+          navigate('/RestaurantManagement');
+        }
       } else {
-        // Handle specific errors based on the response status
-        console.warn('Response not OK:', result);
-        alert(result.error || `Error ${response.status}: ${response.statusText}`);
+        alert(result.error);
       }
     } catch (error) {
-      // Handle unexpected errors
-      console.error('Unexpected Error:', error);
-      alert('An unexpected error occurred. Please try again later.');
+      console.error('Error:', error);
     }
   
-    setOpen(false); // Close the dialog
+    setOpen(false); // Close the dialog after form submission
   };
+  
   
 
   
@@ -148,7 +150,7 @@ const Restaurant = () => {
   return (
     <Box>
       {/* New Partner Section with Image */}
-      <Box display="flex" justifyContent="space-between" alignItems="center" padding={4} bgcolor="#f5f5f5">
+      <Box display="flex" justifyContent="space-between" alignItems="center" padding={4} bgcolor="#ffdab9">
         <Box flex="1" display="flex" flexDirection="column" alignItems="flex-start">
           <Typography variant="h4" gutterBottom>
             Register with Delight Zone
@@ -160,7 +162,7 @@ const Restaurant = () => {
             <Button variant="contained" color="warning" onClick={handleRegisterClick}>
               Register your restaurant
             </Button>
-            <Button variant="outlined" color="warning" onClick={handleLoginClick}>
+            <Button variant="contained" color="warning" onClick={handleLoginClick}>
               Login as restaurant manager
             </Button>
           </Box>

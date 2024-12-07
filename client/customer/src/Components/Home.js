@@ -4,7 +4,7 @@ import ScrollableCards from './ScrollableCards';
 import CardGrid from './CardGrid';
 import CardRow from './CardRow';
 import Footer from './Footer';
-import food4 from './food4.png';
+
 
 const Home = () => {
   useEffect(() => {
@@ -19,7 +19,7 @@ const Home = () => {
       {/* Background Image Container */}
       <div style={{
         height: '80vh',
-        backgroundImage: `url(./food4.png)`, 
+        
         backgroundSize: 'cover',
         backgroundPosition: 'top center',
         backgroundRepeat: 'no-repeat',
@@ -32,7 +32,6 @@ const Home = () => {
        {/* Background Image Container */}
        <div style={{
         height: '80vh',
-        backgroundImage: `url(./food4.png)`, 
         backgroundSize: 'cover',
         backgroundPosition: 'top center',
         backgroundRepeat: 'no-repeat',

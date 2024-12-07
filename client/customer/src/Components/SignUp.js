@@ -97,7 +97,6 @@ const SignUp = () => {
         helperText={errors.phone?.message}
         margin="normal"
       />
-
       <TextField
         fullWidth
         label="Email"
