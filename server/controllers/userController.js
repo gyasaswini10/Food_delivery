@@ -1,4 +1,3 @@
-// controllers/userController.js
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
@@ -59,7 +58,16 @@ const login1 = async (req, res) => {
     // Generate JWT token
     const token = jwt.sign({ userId: user._id }, 'your_jwt_secret', { expiresIn: '1h' });
 
-    res.json({ token });
+    // Set token in cookie (httpOnly, secure, sameSite for security)
+    res.cookie('token', token, {
+      httpOnly: true,   // Makes the cookie inaccessible to JavaScript (helps with XSS prevention)
+      secure: process.env.NODE_ENV === 'production',  // Only set secure cookies in production
+      sameSite: 'Strict',  // Helps prevent CSRF attacks
+      maxAge: 3600000,  // 1 hour expiration
+    });
+
+    // Return success message
+    res.status(200).json({ message: 'Login successful' });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Server error' });
@@ -105,6 +113,8 @@ const deleteUser = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
+
+// Fetch profile details (protected route)
 const getProfile = async (req, res) => {
   try {
     // Retrieve the user based on the authenticated user's ID
@@ -118,11 +128,12 @@ const getProfile = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
+
 module.exports = {
   register1,
   login1,
   Currentuser,
   updateUser,
   deleteUser,
-  getProfile, 
+  getProfile,
 };
