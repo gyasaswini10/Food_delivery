@@ -6,7 +6,6 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import emailjs from '@emailjs/browser';
-import Cookies from 'js-cookie'; // Import js-cookie
 
 const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -40,13 +39,11 @@ const Login = () => {
 
     try {
       const response = await axios.post('https://project-server1.onrender.com/api/users/login', data);
-      const { token, username, email, phone, city, country, address } = response.data;
+      const { token, username } = response.data;
 
-      // Save the token as a cookie and set expiration if needed (e.g., 7 days)
-      Cookies.set('token', token, { expires: 7 }); // Cookie expires in 7 days
-      Cookies.set('userDetails', JSON.stringify({ username, email, phone, city, country, address }), { expires: 7 });
-
-      console.log('Saved userDetails:', JSON.parse(Cookies.get('userDetails')));
+      // Save the token
+      localStorage.setItem('token', token);
+      localStorage.setItem('username', username);
 
       // Send login notification email
       sendEmailNotification(data.email);
@@ -54,9 +51,8 @@ const Login = () => {
       setMessage('Login successful! Redirecting...');
       console.log('Login successful:', response.data);
 
-      // Redirect to the profile page after a short delay
       setTimeout(() => {
-        window.location.href = '/profile'; // Redirect to Profile
+        window.location.href = '/home'; // Redirect to the home page after delay
       }, 2000);
     } catch (error) {
       const errorMsg = error.response?.data?.message || 'Unknown error occurred';
@@ -85,6 +81,7 @@ const Login = () => {
         label="Email"
         color='warning'
         type="email"
+        color='warning'
         {...register('email', {
           required: 'Email is required',
           pattern: {
