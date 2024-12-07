@@ -110,29 +110,35 @@ const Restaurant = () => {
       email: document.querySelector('[name="email"]').value,
       password: document.querySelector('[name="password"]').value,
     };
-
+  
     const endpoint = activeForm === 'register' ? '/register' : '/login';
-
+  
     try {
-      const response = await fetch(`http://localhost:5000/api${endpoint}`, {
+      const response = await fetch(`http://localhost:5000${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify(data), // Send the correct data payload
       });
-
+  
+      // Parse the JSON response
       const result = await response.json();
+  
+      // Check if the response status is OK
       if (response.ok) {
         // Display the success message and redirect to RestaurantManagement
         alert(result.message || 'Login successful! Redirecting...');
         navigate('/RestaurantManagement', { state: { message: 'Welcome!' } }); // Pass a welcome message
       } else {
-        alert(result.error || 'Something went wrong. Please try again.');
+        // Handle specific errors based on the response status
+        console.warn('Response not OK:', result);
+        alert(result.error || `Error ${response.status}: ${response.statusText}`);
       }
     } catch (error) {
-      console.error('Error:', error);
-      alert('An unexpected error occurred. Please try again.');
+      // Handle unexpected errors
+      console.error('Unexpected Error:', error);
+      alert('An unexpected error occurred. Please try again later.');
     }
-
+  
     setOpen(false); // Close the dialog
   };
   
