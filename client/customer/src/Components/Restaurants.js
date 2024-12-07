@@ -118,12 +118,10 @@ const Restaurant = () => {
       const response = await fetch(`https://project-server1.onrender.com${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data), // Send the correct data payload
+        body: JSON.stringify(data),
       });
   
       const result = await response.json();
-  
-      // Check if the response status is OK
       if (response.ok) {
         alert(result.message);  // Alert on success
         if (activeForm === 'register') {
@@ -280,12 +278,12 @@ const Restaurant = () => {
         </div>
     
     </div>{/* Testimonials Section */}
-<div className="testimonial-container">
-  <IconButton className="testimonial-arrow arrow-left" onClick={handlePrev}>
+<div className="testimonial-container" >
+  <IconButton className="testimonial-arrow arrow-left" onClick={handlePrev} >
     <ArrowBackIosIcon />
   </IconButton>
 
-  <Card className="testimonial-card" variant="outlined">
+  <Card className="testimonial-card" variant="outlined" >
     <CardContent>
       <Typography variant="h6" component="div">
         {testimonials[currentIndex].feedback}
