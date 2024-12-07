@@ -10,7 +10,6 @@ import {
   AccordionSummary,
   AccordionDetails,
   TextField,
-  Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
@@ -73,7 +72,7 @@ const faqs = [
 const Restaurant = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeForm, setActiveForm] = useState(''); // 'register' or 'login'
-  const [open, setOpen] = useState(false);
+  const [message, setMessage] = useState('');
   const navigate = useNavigate(); // Hook to navigate between pages
 
   const handleNext = () => {
@@ -86,17 +85,12 @@ const Restaurant = () => {
 
   const handleRegisterClick = () => {
     setActiveForm('register');
-    setOpen(true);
+    setMessage('');
   };
 
   const handleLoginClick = () => {
     setActiveForm('login');
-    setOpen(true);
-    
-  };
-
-  const handleClose = () => {
-    setOpen(false);
+    setMessage('');
   };
 
   const handleFormSubmit = async () => {
@@ -123,7 +117,7 @@ const Restaurant = () => {
   
       const result = await response.json();
       if (response.ok) {
-        alert(result.message);  // Alert on success
+        setMessage(activeForm === 'register' ? 'Registered Successfully' : 'Login Successful');
         if (activeForm === 'register') {
           // Redirect to Restaurant Management after registration
           navigate('/RestaurantManagement');
@@ -132,18 +126,13 @@ const Restaurant = () => {
           navigate('/RestaurantManagement');
         }
       } else {
-        alert(result.error);
+        setMessage(result.error || 'Something went wrong');
       }
     } catch (error) {
       console.error('Error:', error);
+      setMessage('An error occurred. Please try again later.');
     }
-  
-    setOpen(false); // Close the dialog after form submission
   };
-  
-  
-
-  
 
   return (
     <Box>
@@ -175,46 +164,44 @@ const Restaurant = () => {
         </Box>
       </Box>
 
-      {/* Modal for Register and Login Forms */}
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">
-          {activeForm === 'register' ? 'Register your Restaurant' : 'Login as Restaurant Manager'}
-        </DialogTitle>
-        <DialogContent>
+      {/* Message display for success/error */}
+      {message && (
+        <Typography variant="h6" color="success" align="center" mt={2}>
+          {message}
+        </Typography>
+      )}
+
+      {/* Register and Login Forms */}
+      {activeForm && (
+        <Box component="form" onSubmit={(e) => { e.preventDefault(); handleFormSubmit(); }} padding={3}>
           {activeForm === 'register' && (
             <>
-              <TextField name="restaurantName" label="Restaurant Name" fullWidth margin="normal" color='warning'/>
-              <TextField name="ownerName" label="Owner Name" fullWidth margin="normal" color='warning'/>
-              <TextField name="email" label="Email" fullWidth margin="normal" color='warning'/>
-              <TextField name="phoneNumber" label="Phone Number" fullWidth margin="normal" color='warning'/>
-              <TextField name="address" label="Address" fullWidth margin="normal" color='warning'/>
-              <TextField name="password" label="Password" type="password" fullWidth margin="normal" color='warning'/>
+              <TextField name="restaurantName" label="Restaurant Name" fullWidth margin="normal" color="warning"/>
+              <TextField name="ownerName" label="Owner Name" fullWidth margin="normal" color="warning"/>
+              <TextField name="email" label="Email" fullWidth margin="normal" color="warning"/>
+              <TextField name="phoneNumber" label="Phone Number" fullWidth margin="normal" color="warning"/>
+              <TextField name="address" label="Address" fullWidth margin="normal" color="warning"/>
+              <TextField name="password" label="Password" type="password" fullWidth margin="normal" color="warning"/>
             </>
           )}
           {activeForm === 'login' && (
             <>
-              <TextField name="email" label="Email" fullWidth margin="normal" color='warning'/>
-              <TextField name="password" label="Password" type="password" fullWidth margin="normal" color='warning'/>
+              <TextField name="email" label="Email" fullWidth margin="normal" color="warning"/>
+              <TextField name="password" label="Password" type="password" fullWidth margin="normal" color="warning"/>
             </>
           )}
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="warning">
-            Cancel
-          </Button>
-          <Button onClick={handleFormSubmit} variant="contained" color="warning">
+          <Button type="submit" variant="contained" color="warning" fullWidth>
             {activeForm === 'register' ? 'Submit' : 'Login'}
           </Button>
-        </DialogActions>
-      </Dialog>
+        </Box>
+      )}
 
       {/* Why Partner Section */}
       <div className="restaurant-card">
         <h2>Why should you partner with Delight Zone?</h2>
         <p>
-      Partnering with Delight Zone ensures increased visibility, seamless operations, and steady business growth through their innovative platform.
-      </p>
-
+          Partnering with Delight Zone ensures increased visibility, seamless operations, and steady business growth through their innovative platform.
+        </p>
 
         <div className="business-cards-container">
           <div className="card2">
@@ -230,76 +217,76 @@ const Restaurant = () => {
             <p>monthly orders</p>
           </div>
         </div>
-      {/* How it works section */}
-      <div className="how-it-works">
-        <h2>How it works?</h2>
-        <div className="steps-container">
-          <div className="step">
-            <div className="step-icon">
-              <img 
-                src="https://b.zmtcdn.com/merchant-onboarding/ecb5e086ee64a4b8b063011537be18171600699886.png" 
-                height="40" 
-                width="40" 
-                alt="Step 1 Icon" 
-              />
-            </div>
-            <h3>Step 1</h3>
-            <p>Set up your page on Delight Zone.</p>
-            <p>Create a listing on Delight Zone to help users easily find your business.</p>
-          </div>
 
-          <div className="step">
-            <div className="step-icon">
-              <img 
-                src="https://b.zmtcdn.com/merchant-onboarding/71d998231fdaeb0bffe8ff5872edcde81600699935.png" 
-                height="40" 
-                width="40" 
-                alt="Step 2 Icon" 
-              />
+        {/* How it works section */}
+        <div className="how-it-works">
+          <h2>How it works?</h2>
+          <div className="steps-container">
+            <div className="step">
+              <div className="step-icon">
+                <img 
+                  src="https://b.zmtcdn.com/merchant-onboarding/ecb5e086ee64a4b8b063011537be18171600699886.png" 
+                  height="40" 
+                  width="40" 
+                  alt="Step 1 Icon" 
+                />
+              </div>
+              <h3>Step 1</h3>
+              <p>Set up your page on Delight Zone.</p>
+              <p>Create a listing on Delight Zone to help users easily find your business.</p>
             </div>
-            <h3>Step 2</h3>
-            <p>Sign up for online ordering.</p>
-            <p>And quickly deliver orders to Thousands of customers.</p>
-          </div>
 
-          <div className="step">
-            <div className="step-icon">
-              <img 
-                src="https://b.zmtcdn.com/merchant-onboarding/efdd6ac0cd160a46c97ad58d9bbd73fd1600699950.png" 
-                height="40" 
-                width="40" 
-                alt="Step 3 Icon" 
-              />
+            <div className="step">
+              <div className="step-icon">
+                <img 
+                  src="https://b.zmtcdn.com/merchant-onboarding/71d998231fdaeb0bffe8ff5872edcde81600699935.png" 
+                  height="40" 
+                  width="40" 
+                  alt="Step 2 Icon" 
+                />
+              </div>
+              <h3>Step 2</h3>
+              <p>Sign up for online ordering.</p>
+              <p>And quickly deliver orders to Thousands of customers.</p>
             </div>
-            <h3>Step 3</h3>
-            <p>Begin accepting online orders.</p>
-            <p>Handle orders through our partner app, web dashboard, or API integrations.</p>
+
+            <div className="step">
+              <div className="step-icon">
+                <img 
+                  src="https://b.zmtcdn.com/merchant-onboarding/efdd6ac0cd160a46c97ad58d9bbd73fd1600699950.png" 
+                  height="40" 
+                  width="40" 
+                  alt="Step 3 Icon" 
+                />
+              </div>
+              <h3>Step 3</h3>
+              <p>Begin accepting online orders.</p>
+              <p>Handle orders through our partner app, web dashboard, or API integrations.</p>
+            </div>
           </div>
         </div>
-    
-    </div>{/* Testimonials Section */}
-<div className="testimonial-container" >
-  <IconButton className="testimonial-arrow arrow-left" onClick={handlePrev} >
-    <ArrowBackIosIcon />
-  </IconButton>
 
-  <Card className="testimonial-card" variant="outlined" >
-    <CardContent>
-      <Typography variant="h6" component="div">
-        {testimonials[currentIndex].feedback}
-      </Typography>
-      <Typography color="text.secondary">
-        - {testimonials[currentIndex].name}, {testimonials[currentIndex].role}
-      </Typography>
-    </CardContent>
-  </Card>
+        {/* Testimonials Section */}
+        <div className="testimonial-container">
+          <IconButton className="testimonial-arrow arrow-left" onClick={handlePrev}>
+            <ArrowBackIosIcon />
+          </IconButton>
 
-  <IconButton className="testimonial-arrow arrow-right" onClick={handleNext}>
-    <ArrowForwardIosIcon />
-  </IconButton>
-</div>
+          <Card className="testimonial-card" variant="outlined">
+            <CardContent>
+              <Typography variant="h6" component="div">
+                {testimonials[currentIndex].feedback}
+              </Typography>
+              <Typography color="text.secondary">
+                - {testimonials[currentIndex].name}, {testimonials[currentIndex].role}
+              </Typography>
+            </CardContent>
+          </Card>
 
-
+          <IconButton className="testimonial-arrow arrow-right" onClick={handleNext}>
+            <ArrowForwardIosIcon />
+          </IconButton>
+        </div>
 
         {/* FAQs Section */}
         <div className="faq-container">
