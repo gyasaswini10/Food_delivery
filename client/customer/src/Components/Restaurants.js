@@ -98,49 +98,63 @@ const Restaurant = () => {
     setOpen(false);
   };
 
+ 
+  const [loginError, setLoginError] = useState(''); // To store the error message
   const handleFormSubmit = async () => {
-    const data = activeForm === 'register' ? {
-      restaurantName: document.querySelector('[name="restaurantName"]').value,
-      ownerName: document.querySelector('[name="ownerName"]').value,
-      email: document.querySelector('[name="email"]').value,
-      phoneNumber: document.querySelector('[name="phoneNumber"]').value,
-      address: document.querySelector('[name="address"]').value,
-      password: document.querySelector('[name="password"]').value,
-    } : {
-      email: document.querySelector('[name="email"]').value,
-      password: document.querySelector('[name="password"]').value,
-    };
+    const data = activeForm === 'register'
+      ? {
+          restaurantName: document.querySelector('[name="restaurantName"]').value,
+          ownerName: document.querySelector('[name="ownerName"]').value,
+          email: document.querySelector('[name="email"]').value,
+          phoneNumber: document.querySelector('[name="phoneNumber"]').value,
+          address: document.querySelector('[name="address"]').value,
+          password: document.querySelector('[name="password"]').value,
+        }
+      : {
+          email: document.querySelector('[name="email"]').value,
+          password: document.querySelector('[name="password"]').value,
+        };
   
     const endpoint = activeForm === 'register' ? '/register' : '/login';
   
     try {
-      const response = await fetch(`http://localhost:5000${endpoint}`, {
+      const response = await fetch(`http://localhost:5000/api${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data), // Send the correct data payload
+        body: JSON.stringify(data),
       });
   
-      // Parse the JSON response
       const result = await response.json();
   
-      // Check if the response status is OK
       if (response.ok) {
-        // Display the success message and redirect to RestaurantManagement
-        alert(result.message || 'Login successful! Redirecting...');
-        navigate('/RestaurantManagement', { state: { message: 'Welcome!' } }); // Pass a welcome message
+        alert(result.message); // Display success message
+        if (activeForm === 'login') {
+          document.body.innerHTML = `<h1>Login Successful</h1>`; // Show message on screen
+          setTimeout(() => navigate('/RestaurantManagement'), 2000); // Navigate after 2 seconds
+        }
       } else {
-        // Handle specific errors based on the response status
-        console.warn('Response not OK:', result);
-        alert(result.error || `Error ${response.status}: ${response.statusText}`);
+        setLoginError(result.error || 'Invalid credentials'); // Show error on login failure
       }
     } catch (error) {
-      // Handle unexpected errors
-      console.error('Unexpected Error:', error);
-      alert('An unexpected error occurred. Please try again later.');
+      console.error('Error:', error);
+      setLoginError('Something went wrong. Please try again later.');
     }
   
-    setOpen(false); // Close the dialog
+    setOpen(false); // Close dialog
   };
+<DialogContent>
+  {activeForm === 'login' && (
+    <>
+      <TextField name="email" label="Email" fullWidth margin="normal" color="warning" />
+      <TextField name="password" label="Password" type="password" fullWidth margin="normal" color="warning" />
+      {loginError && (
+        <Typography color="error" variant="body2" style={{ marginTop: '10px' }}>
+          {loginError}
+        </Typography>
+      )}
+    </>
+  )}
+</DialogContent>
   
 
   
