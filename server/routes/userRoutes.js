@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const User = require('../models/User'); // Import the User model
 const authenticateJWT = require('../middleware/authenticateJWT');
-
 // Import all the necessary controller functions
 const { register1, login1, Currentuser, updateUser, deleteUser, getProfile } = require('../controllers/userController');
 
