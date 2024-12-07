@@ -5,7 +5,7 @@ const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
 const reviewRoutes = require('./routes/reviewRoutes'); // Import review routes
 const restaurantRoutes = require('./routes/restaurantRoutes');
-const restaurantRoutes = require('./routes/restaurantRoutes'); // Import restaurant routes
+ // Import restaurant routes
 
 dotenv.config(); // Load environment variables
 
