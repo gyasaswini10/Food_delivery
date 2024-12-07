@@ -22,7 +22,6 @@ import './Restaurant.css';
 import OneImage from './One.jpg';
 import { useNavigate } from 'react-router-dom';
 
-// Testimonial data
 const testimonials = [
   {
     name: 'Tushar',
