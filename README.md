@@ -2,7 +2,7 @@ Server
 https://project-server1.onrender.com/
 
 Website deploy link
-https://fooddeliveryps15mswddelightzone.vercel.app/profile
+https://fooddeliveryps15mswddelightzone.vercel.app/
 
 
 
