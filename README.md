@@ -1,3 +1,16 @@
+Server
+https://project-server1.onrender.com/
+
+Website deploy link
+https://fooddeliveryps15mswddelightzone.vercel.app/profile
+
+
+
+
+
+
+
+
 # Food_delivery
 PS15 - Food Delivery Platform 
    Abstract: Create a web application for food delivery services where users can browse 
